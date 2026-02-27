@@ -3,6 +3,8 @@ const holidayEl = document.getElementById("holiday");
 const jokeEl = document.getElementById("joke");
 const imageEl = document.getElementById("greeting-image");
 const nextBtn = document.getElementById("next-btn");
+const searchForm = document.getElementById("search-form");
+const searchInput = document.getElementById("search-input");
 
 const now = new Date();
 const DATE_KEY = [
@@ -306,3 +308,23 @@ async function init() {
 
 init();
 nextBtn.addEventListener("click", generateAll);
+
+
+function buildSearchUrl(value) {
+  const raw = value.trim();
+  if (!raw) return "https://www.google.com";
+
+  const hasProtocol = /^https?:\/\//i.test(raw);
+  const looksLikeDomain = /\.[a-z]{2,}(\/|$)/i.test(raw);
+
+  if (hasProtocol) return raw;
+  if (looksLikeDomain) return `https://${raw}`;
+
+  return `https://www.google.com/search?q=${encodeURIComponent(raw)}`;
+}
+
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const url = buildSearchUrl(searchInput.value);
+  window.open(url, "_blank", "noopener,noreferrer");
+});

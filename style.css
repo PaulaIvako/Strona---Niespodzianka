@@ -50,11 +50,52 @@ body {
 
 .joke {
   white-space: pre-line;
-  margin: 0 auto 2.25rem;
+  margin: 0 auto 1.6rem;
   max-width: 70ch;
   font-size: clamp(1rem, 2.4vw, 1.28rem);
   line-height: 1.6;
   color: #394055;
+}
+
+
+.search-wrap {
+  width: min(760px, 100%);
+  margin: 0 auto 2.9rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.55rem;
+  background: #f5f6f8;
+  border: 1px solid #d9dde6;
+  border-radius: 999px;
+  padding: 0.45rem;
+}
+
+.search-wrap input {
+  border: 0;
+  background: transparent;
+  outline: none;
+  min-width: 0;
+  font-size: 1rem;
+  color: #2d3348;
+  padding: 0.45rem 0.7rem;
+}
+
+.search-wrap input::placeholder {
+  color: #6d7489;
+}
+
+.search-wrap button {
+  border: 0;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #2d3348;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.search-wrap button:hover {
+  filter: brightness(0.98);
 }
 
 .image-wrap {
