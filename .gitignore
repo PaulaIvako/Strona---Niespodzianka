@@ -1,0 +1,6 @@
+.tmp_data/
+.tmp_pools/
+*.zip
+suchary.json
+suchary-media.json
+image-pools.json

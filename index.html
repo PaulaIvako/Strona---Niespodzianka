@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codzienna Niespodzianka</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="card" aria-live="polite">
+      <p id="today" class="today"></p>
+      <h1 id="holiday" class="holiday">Sprawdzam, jakie jest dziś święto...</h1>
+      <p id="joke" class="joke"></p>
+
+      <div class="image-wrap">
+        <img id="greeting-image" alt="Laurka dnia" />
+      </div>
+
+      <button id="next-btn" type="button" class="next-btn">Zgeneruj</button>
+      <p class="sources">Źródła: e-kartki.net.pl (laurki), piszsuchary.pl/najlepsze (suchary)</p>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
