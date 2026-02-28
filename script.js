@@ -47,6 +47,15 @@ let currentTheme = "daily";
 let lastImageUrl = "";
 let lastSucharText = "";
 
+
+function isPinterestImageUrl(url) {
+  return typeof url === "string" && /^https:\/\/i\.pinimg\.com\//i.test(url);
+}
+
+function sanitizeImagePoolList(list) {
+  return unique((list || []).filter(isPinterestImageUrl));
+}
+
 function setDateLine() {
   todayEl.textContent = now.toLocaleDateString("pl-PL", {
     weekday: "long",
@@ -173,7 +182,14 @@ async function loadImagePools() {
   try {
     const data = typeof IMAGE_POOLS !== "undefined" ? IMAGE_POOLS : null;
     if (!data) throw new Error("Brak IMAGE_POOLS");
-    imagePools = data;
+
+    imagePools = {
+      daily: sanitizeImagePoolList(data.daily),
+      pobudka: sanitizeImagePoolList(data.pobudka),
+      powodzenia: sanitizeImagePoolList(data.powodzenia),
+      zaproszenia: sanitizeImagePoolList(data.zaproszenia),
+      all: sanitizeImagePoolList(data.all)
+    };
   } catch {
     imagePools = { all: [] };
   }
@@ -195,7 +211,10 @@ async function loadSucharyPool() {
 
 function getUsedImages() {
   try {
-    return JSON.parse(localStorage.getItem(USED_KEY) || "[]");
+    const parsed = JSON.parse(localStorage.getItem(USED_KEY) || "[]");
+    const clean = (Array.isArray(parsed) ? parsed : []).filter(isPinterestImageUrl);
+    if (clean.length !== parsed.length) saveUsedImages(clean);
+    return clean;
   } catch {
     return [];
   }
@@ -283,7 +302,12 @@ async function renderNewImage() {
 
     throw new Error("Nie udało się załadować obrazka");
   } catch {
-    imageEl.src = "https://e-kartki.net.pl/kartki/72/5/d/58722.gif";
+    const pools = await loadImagePools();
+    const fallback = (pools.all && pools.all[0]) || "";
+    if (fallback) {
+      imageEl.src = fallback;
+      lastImageUrl = fallback;
+    }
   }
 }
 
