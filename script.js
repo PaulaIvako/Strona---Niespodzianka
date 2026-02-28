@@ -6,6 +6,14 @@ const nextBtn = document.getElementById("next-btn");
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 
+
+function focusSearchInput() {
+  if (!searchInput) return;
+  window.requestAnimationFrame(() => {
+    searchInput.focus({ preventScroll: true });
+  });
+}
+
 const now = new Date();
 const DATE_KEY = [
   now.getFullYear(),
@@ -351,10 +359,12 @@ async function init() {
   currentTheme = occasion.theme;
 
   await generateAll();
+  focusSearchInput();
 }
 
 init();
 nextBtn.addEventListener("click", generateAll);
+window.addEventListener("pageshow", focusSearchInput);
 
 
 function buildSearchUrl(value) {
