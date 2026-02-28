@@ -22,6 +22,25 @@ const FALLBACK_SUCHARY = [
   { text: "Dlaczego komputerowi jest zimno? Bo ma otwarte okna.", image: "" }
 ];
 
+const DAILY_SPECIAL_DAYS = [
+  "Dzień Uśmiechu",
+  "Dzień Dobrych Wiadomości",
+  "Dzień Przytulania",
+  "Dzień Spokojnej Kawy",
+  "Dzień Łapania Promieni Słońca",
+  "Dzień Dobrego Słowa",
+  "Dzień Małych Przyjemności",
+  "Dzień Miłych Niespodzianek",
+  "Dzień Czekolady",
+  "Dzień Przyjaźni",
+  "Dzień Roślin Domowych",
+  "Dzień Dobrego Humoru",
+  "Dzień Marzycieli",
+  "Dzień Odpoczynku",
+  "Dzień Wdzięczności",
+  "Dzień Serca"
+];
+
 let imagePools = null;
 let sucharyPool = null;
 let currentTheme = "daily";
@@ -66,6 +85,17 @@ function addDays(dateString, days) {
   const d = new Date(`${dateString}T00:00:00`);
   d.setDate(d.getDate() + days);
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+function getDayOfYear(date = new Date()) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  const diff = date - start;
+  return Math.floor(diff / 86400000);
+}
+
+function getDailyRotatingOccasion() {
+  const index = (getDayOfYear(now) - 1) % DAILY_SPECIAL_DAYS.length;
+  return DAILY_SPECIAL_DAYS[index];
 }
 
 function getInternationalDays(year) {
@@ -135,14 +165,7 @@ async function getOccasion() {
     return { title: `Dziś obchodzimy: ${intl.name}`, theme: intl.theme };
   }
 
-  const seasonLabel = {
-    spring: "wiosny",
-    summer: "lata",
-    autumn: "jesieni",
-    winter: "zimy"
-  }[getSeasonTheme(now.getMonth())];
-
-  return { title: `Dziś celebrujemy klimat ${seasonLabel}.`, theme: "daily" };
+  return { title: `Dziś obchodzimy: ${getDailyRotatingOccasion()}`, theme: "daily" };
 }
 
 async function loadImagePools() {
