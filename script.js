@@ -30,27 +30,9 @@ const FALLBACK_SUCHARY = [
   { text: "Dlaczego komputerowi jest zimno? Bo ma otwarte okna.", image: "" }
 ];
 
-const DAILY_SPECIAL_DAYS = [
-  "Dzień Uśmiechu",
-  "Dzień Dobrych Wiadomości",
-  "Dzień Przytulania",
-  "Dzień Spokojnej Kawy",
-  "Dzień Łapania Promieni Słońca",
-  "Dzień Dobrego Słowa",
-  "Dzień Małych Przyjemności",
-  "Dzień Miłych Niespodzianek",
-  "Dzień Czekolady",
-  "Dzień Przyjaźni",
-  "Dzień Roślin Domowych",
-  "Dzień Dobrego Humoru",
-  "Dzień Marzycieli",
-  "Dzień Odpoczynku",
-  "Dzień Wdzięczności",
-  "Dzień Serca"
-];
-
 let imagePools = null;
 let sucharyPool = null;
+let holidayCalendar = null;
 let currentTheme = "daily";
 let lastImageUrl = "";
 let lastSucharText = "";
@@ -104,34 +86,25 @@ function addDays(dateString, days) {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-function getDayOfYear(date = new Date()) {
-  const start = new Date(date.getFullYear(), 0, 0);
-  const diff = date - start;
-  return Math.floor(diff / 86400000);
-}
-
-function getDailyRotatingOccasion() {
-  const index = (getDayOfYear(now) - 1) % DAILY_SPECIAL_DAYS.length;
-  return DAILY_SPECIAL_DAYS[index];
-}
-
-function getInternationalDays(year) {
+function getFallbackDays(year) {
   const easter = computeEasterDate(year);
   return {
-    "01-21": { name: "Dzień Babci", theme: "podziekowania" },
-    "01-22": { name: "Dzień Dziadka", theme: "podziekowania" },
-    "02-14": { name: "Walentynki", theme: "milosc" },
-    "03-08": { name: "Dzień Kobiet", theme: "milosc" },
-    "03-20": { name: "Pierwszy dzień wiosny", theme: "daily" },
-    "04-01": { name: "Prima Aprilis", theme: "powodzenia" },
-    "05-26": { name: "Dzień Matki", theme: "podziekowania" },
-    "06-01": { name: "Dzień Dziecka", theme: "zaproszenia" },
-    "06-23": { name: "Dzień Ojca", theme: "podziekowania" },
-    "07-30": { name: "Międzynarodowy Dzień Przyjaźni", theme: "powodzenia" },
-    "10-01": { name: "Międzynarodowy Dzień Kawy", theme: "pobudka" },
-    "12-31": { name: "Sylwester", theme: "zaproszenia" },
-    [easter.slice(5)]: { name: "Wielkanoc", theme: "zaproszenia" },
-    [addDays(easter, 1).slice(5)]: { name: "Poniedziałek Wielkanocny", theme: "zaproszenia" }
+    [DATE_KEY]: [],
+    [`${year}-01-21`]: ["Dzień Babci"],
+    [`${year}-01-22`]: ["Dzień Dziadka"],
+    [`${year}-02-14`]: ["Walentynki"],
+    [`${year}-03-06`]: ["Europejski Dzień Logopedy"],
+    [`${year}-03-08`]: ["Dzień Kobiet"],
+    [`${year}-03-20`]: ["Pierwszy dzień wiosny"],
+    [`${year}-04-01`]: ["Prima Aprilis"],
+    [`${year}-05-26`]: ["Dzień Matki"],
+    [`${year}-06-01`]: ["Dzień Dziecka"],
+    [`${year}-06-23`]: ["Dzień Ojca"],
+    [`${year}-07-30`]: ["Międzynarodowy Dzień Przyjaźni"],
+    [`${year}-10-01`]: ["Międzynarodowy Dzień Kawy"],
+    [`${year}-12-31`]: ["Sylwester"],
+    [easter]: ["Wielkanoc"],
+    [addDays(easter, 1)]: ["Poniedziałek Wielkanocny"]
   };
 }
 
@@ -149,40 +122,24 @@ function mapThemeFromHolidayName(text) {
   return "daily";
 }
 
-async function getPublicHolidayName() {
-  const year = now.getFullYear();
-  const url = `https://date.nager.at/api/v3/PublicHolidays/${year}/PL`;
-  try {
-    const response = await fetch(url);
-    if (!response.ok) return null;
-    const holidays = await response.json();
-    const todayHoliday = holidays.find((item) => item.date === DATE_KEY);
-    return todayHoliday ? todayHoliday.localName || todayHoliday.name : null;
-  } catch {
-    return null;
-  }
+async function loadHolidayCalendar() {
+  if (holidayCalendar) return holidayCalendar;
+  const data = typeof HOLIDAYS_DATA !== "undefined" ? HOLIDAYS_DATA : null;
+  holidayCalendar = data && typeof data === "object" ? data : getFallbackDays(now.getFullYear());
+
+  return holidayCalendar;
 }
 
 async function getOccasion() {
-  const international = getInternationalDays(now.getFullYear());
-  const key = DATE_KEY.slice(5);
-  const intl = international[key] || null;
-  const publicHoliday = await getPublicHolidayName();
+  const calendar = await loadHolidayCalendar();
+  const holidayNames = Array.isArray(calendar[DATE_KEY]) ? calendar[DATE_KEY] : [];
+  const title = holidayNames.join(", ");
 
-  if (publicHoliday && intl && publicHoliday !== intl.name) {
-    const name = `${publicHoliday} i ${intl.name}`;
-    return { title: `Dziś obchodzimy: ${name}`, theme: mapThemeFromHolidayName(name) };
+  if (title) {
+    return { title: `Dziś obchodzimy: ${title}`, theme: mapThemeFromHolidayName(title) };
   }
 
-  if (publicHoliday) {
-    return { title: `Dziś obchodzimy: ${publicHoliday}`, theme: mapThemeFromHolidayName(publicHoliday) };
-  }
-
-  if (intl) {
-    return { title: `Dziś obchodzimy: ${intl.name}`, theme: intl.theme };
-  }
-
-  return { title: `Dziś obchodzimy: ${getDailyRotatingOccasion()}`, theme: "daily" };
+  return { title: "Dziś nie ma u nas dodatkowego święta dnia", theme: getSeasonTheme(now.getMonth()) };
 }
 
 async function loadImagePools() {

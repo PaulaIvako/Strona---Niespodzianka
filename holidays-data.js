@@ -1,0 +1,1862 @@
+const HOLIDAYS_DATA = {
+  "_meta": {
+    "source": "https://www.kalendarzswiat.pl/",
+    "generated_at": "2026-03-06",
+    "years": [
+      2026,
+      2027
+    ]
+  },
+  "2026-01-01": [
+    "Nowy Rok",
+    "Światowy Dzień Pokoju",
+    "Świętej Bożej Rodzicielki Maryi"
+  ],
+  "2026-01-06": [
+    "Trzech Króli (Objawienie Pańskie)",
+    "Dzień Filatelisty"
+  ],
+  "2026-01-09": [
+    "Dzień Ligi Ochrony Przyrody"
+  ],
+  "2026-01-11": [
+    "Chrzest Pański"
+  ],
+  "2026-01-12": [
+    "Dzień Sprzątania Biurka"
+  ],
+  "2026-01-15": [
+    "Dzień Wikipedii"
+  ],
+  "2026-01-17": [
+    "Dzień Dialogu z Judaizmem (obchodzony przez Kościół Katolicki)"
+  ],
+  "2026-01-18": [
+    "Dzień Kubusia Puchatka"
+  ],
+  "2026-01-21": [
+    "Dzień Babci"
+  ],
+  "2026-01-22": [
+    "Dzień Dziadka"
+  ],
+  "2026-01-24": [
+    "Światowy Dzień Środków Masowego Przekazu"
+  ],
+  "2026-01-25": [
+    "Dzień Sekretarki i Asystentki"
+  ],
+  "2026-01-26": [
+    "Dzień Dialogu z Islamem",
+    "Dzień Transplantacji",
+    "Światowy Dzień Celnictwa"
+  ],
+  "2026-01-27": [
+    "Międzynarodowy Dzień Pamięci o Ofiarach Holokaustu"
+  ],
+  "2026-01-28": [
+    "Międzynarodowy Dzień Mobilizacji przeciwko Wojnie Nuklearnej"
+  ],
+  "2026-02-02": [
+    "Światowy Dzień Życia Konsekrowanego",
+    "Ofiarowanie Pańskie (Matki Boskiej Gromnicznej)",
+    "Światowy Dzień Obszarów Wodno-Błotnych",
+    "Dzień Handlowca"
+  ],
+  "2026-02-03": [
+    "Dzień Bezpiecznego Internetu"
+  ],
+  "2026-02-04": [
+    "Międzynarodowy Dzień Walki z Rakiem"
+  ],
+  "2026-02-09": [
+    "Międzynarodowy Dzień Pizzy"
+  ],
+  "2026-02-11": [
+    "Europejski Dzień Numeru 112",
+    "Światowy Dzień Chorych"
+  ],
+  "2026-02-12": [
+    "Dzień Darwina",
+    "Tłusty czwartek"
+  ],
+  "2026-02-14": [
+    "Dzień Zakochanych (Walentynki)",
+    "Ostatnia sobota karnawału"
+  ],
+  "2026-02-15": [
+    "Światowy Dzień Młodzieży Prawosławnej"
+  ],
+  "2026-02-17": [
+    "Dzień Służby Cywilnej",
+    "Dzień Kota",
+    "Ostatki"
+  ],
+  "2026-02-18": [
+    "Popielec"
+  ],
+  "2026-02-19": [
+    "Dzień Nauki Polskiej"
+  ],
+  "2026-02-20": [
+    "Międzynarodowy Dzień Palących Fajkę",
+    "Światowy Dzień Sprawiedliwości Społecznej"
+  ],
+  "2026-02-21": [
+    "Międzynarodowy Dzień Języka Ojczystego"
+  ],
+  "2026-02-22": [
+    "Dzień Ofiar Przestępstw",
+    "I Niedziela Wielkiego Postu"
+  ],
+  "2026-02-23": [
+    "Ogólnopolski Dzień Walki z Depresją"
+  ],
+  "2026-02-28": [
+    "Dzień Chorób Rzadkich"
+  ],
+  "2026-03-01": [
+    "Międzynarodowy Dzień Obrony Cywilnej",
+    "Światowy Dzień Świadomości Autoagresji",
+    "Międzynarodowy Dzień Walki Przeciw Zbrojeniom Atomowym",
+    "Narodowy Dzień Pamięci Żołnierzy Wyklętych",
+    "II Niedziela Wielkiego Postu"
+  ],
+  "2026-03-03": [
+    "Międzynarodowy Dzień Pisarzy"
+  ],
+  "2026-03-04": [
+    "Światowy Dzień Inżyniera"
+  ],
+  "2026-03-05": [
+    "Dzień Geodety Europejskiego i Geoinformacji",
+    "Dzień Teściowej"
+  ],
+  "2026-03-06": [
+    "Europejski Dzień Logopedy"
+  ],
+  "2026-03-08": [
+    "Międzynarodowy Dzień Kobiet",
+    "III Niedziela Wielkiego Postu"
+  ],
+  "2026-03-09": [
+    "Dzień Statystyki Polskiej"
+  ],
+  "2026-03-10": [
+    "Dzień Mężczyzn"
+  ],
+  "2026-03-12": [
+    "Światowy Dzień Drzemki w Pracy"
+  ],
+  "2026-03-14": [
+    "Światowy Dzień Liczby Pi"
+  ],
+  "2026-03-15": [
+    "Dzień Piekarzy i Cukierników",
+    "Międzynarodowy Dzień (Praw) Konsumenta",
+    "IV Niedziela Wielkiego Postu"
+  ],
+  "2026-03-19": [
+    "Dzień Jedności Kaszubów",
+    "Uroczystość św. Józefa"
+  ],
+  "2026-03-20": [
+    "Światowy Dzień Zdrowia Jamy Ustnej",
+    "Początek astronomicznej wiosny",
+    "Międzynarodowy Dzień Szczęścia"
+  ],
+  "2026-03-21": [
+    "Dzień Wagarowicza",
+    "Międzynarodowy Dzień Lasów",
+    "Międzynarodowy Dzień Walki z Dyskryminacją Rasową",
+    "Międzynarodowy Dzień Poezji"
+  ],
+  "2026-03-22": [
+    "Dzień Ochrony Bałtyku",
+    "Światowy Dzień Wody",
+    "V Niedziela Wielkiego Postu"
+  ],
+  "2026-03-23": [
+    "Dzień Przyjaźni Polsko-Węgierskiej",
+    "Międzynarodowy Dzień Meteorologii"
+  ],
+  "2026-03-24": [
+    "Narodowy Dzień Życia",
+    "Światowy Dzień Walki z Gruźlicą"
+  ],
+  "2026-03-25": [
+    "Zwiastowanie Pańskie (Dzień Świętości Życia)"
+  ],
+  "2026-03-27": [
+    "Międzynarodowy Dzień Teatru"
+  ],
+  "2026-03-29": [
+    "Zmiana czasu z zimowego na letni",
+    "Niedziela Palmowa"
+  ],
+  "2026-03-30": [
+    "Ogólnopolski Dzień Trzeźwości",
+    "Wielki Poniedziałek"
+  ],
+  "2026-03-31": [
+    "Wielki Wtorek"
+  ],
+  "2026-04-01": [
+    "Międzynarodowy Dzień Ptaków",
+    "Prima Aprilis",
+    "Wielka Środa"
+  ],
+  "2026-04-02": [
+    "Światowy Dzień Autyzmu",
+    "Międzynarodowy Dzień Książki Dla Dzieci",
+    "Wielki Czwartek"
+  ],
+  "2026-04-03": [
+    "Wielki Piątek"
+  ],
+  "2026-04-04": [
+    "Międzynarodowy Dzień Wiedzy o Minach i Działań Zapobiegających Minom",
+    "Święto Wojskowej Służby Zdrowia",
+    "Wielka Sobota"
+  ],
+  "2026-04-05": [
+    "Wielkanoc",
+    "Dzień Leśnika i Drzewiarza (Polska)"
+  ],
+  "2026-04-06": [
+    "Poniedziałek Wielkanocny",
+    "Międzynarodowy Dzień Sportu na rzecz Rozwoju i Pokoju"
+  ],
+  "2026-04-07": [
+    "Światowy Dzień Zdrowia",
+    "Wtorek Wielkanocny"
+  ],
+  "2026-04-08": [
+    "Międzynarodowy Dzień Romów",
+    "Środa Oktawy Wielkanocnej"
+  ],
+  "2026-04-09": [
+    "Czwartek Oktawy Wielkanocnej"
+  ],
+  "2026-04-10": [
+    "Piątek Oktawy Wielkanocnej"
+  ],
+  "2026-04-11": [
+    "Ogólnopolski Dzień Walki z Bezrobociem",
+    "Światowy Dzień Osób z Chorobą Parkinsona",
+    "Dzień Radia",
+    "Sobota Oktawy Wielkanocnej"
+  ],
+  "2026-04-12": [
+    "Międzynarodowy Dzień Lotnictwa i Kosmonautyki",
+    "II Niedziela Wielkanocna",
+    "Święto Bożego Miłosierdzia"
+  ],
+  "2026-04-13": [
+    "Dzień Pamięci Ofiar Zbrodni Katyńskiej"
+  ],
+  "2026-04-14": [
+    "Dzień Ludzi Bezdomnych (Polska)",
+    "Święto Chrztu Polski"
+  ],
+  "2026-04-15": [
+    "Międzynarodowy Dzień Kombatanta"
+  ],
+  "2026-04-16": [
+    "Dzień Sapera"
+  ],
+  "2026-04-17": [
+    "Światowy Dzień Chorych na Hemofilię"
+  ],
+  "2026-04-18": [
+    "Dzień Pacjenta w Śpiączce",
+    "Międzynarodowy Dzień Ochrony Zabytków"
+  ],
+  "2026-04-19": [
+    "Dzień Pamięci Ofiar Holocaustu i Powstania w Getcie Warszawskim",
+    "III Niedziela Wielkanocna"
+  ],
+  "2026-04-20": [
+    "Międzynarodowy Dzień Wolnej Prasy"
+  ],
+  "2026-04-22": [
+    "Międzynarodowy Dzień Ziemi"
+  ],
+  "2026-04-23": [
+    "Światowy Dzień Książki i Praw Autorskich"
+  ],
+  "2026-04-24": [
+    "Dzień Zwierząt Laboratoryjnych",
+    "Międzynarodowy Dzień Solidarności Młodzieży"
+  ],
+  "2026-04-25": [
+    "Międzynarodowy Dzień Świadomości Zagrożenia Hałasem",
+    "Międzynarodowy Dzień DNA",
+    "Światowy Dzień Malarii",
+    "Międzynarodowy Dzień Sekretarki"
+  ],
+  "2026-04-26": [
+    "Dzień Psa Poszukiwawczo-Ratowniczego",
+    "Światowy Dzień Własności Intelektualnej",
+    "Dzień Drogowca i Transportowca (Polska)",
+    "Niedziela Dobrego Pasterza"
+  ],
+  "2026-04-27": [
+    "Światowy Dzień Grafika"
+  ],
+  "2026-04-28": [
+    "Światowy Dzień Bezpieczeństwa i Ochrony Zdrowia w Pracy"
+  ],
+  "2026-04-29": [
+    "Dzień Męczeństwa Duchowieństwa Polskiego",
+    "Międzynarodowy Dzień Tańca"
+  ],
+  "2026-04-30": [
+    "Międzynarodowy Dzień Jazzu"
+  ],
+  "2026-05-01": [
+    "Międzynarodowe Święto Pracy"
+  ],
+  "2026-05-02": [
+    "Dzień Polonii i Polaków za Granicą",
+    "Dzień Flagi Rzeczypospolitej Polskiej"
+  ],
+  "2026-05-03": [
+    "Święto Konstytucji 3 Maja",
+    "V Niedziela Wielkanocna",
+    "NMP Królowej Polski",
+    "Światowy Dzień Wolności Prasy",
+    "Międzynarodowy Dzień Astmy i Alergii"
+  ],
+  "2026-05-04": [
+    "Dzień Hutnika",
+    "Dzień Strażaka"
+  ],
+  "2026-05-05": [
+    "Dzień Godności Osoby z Niepełnosprawnością Intelektualną",
+    "Dzień Tolerancji",
+    "Praw Człowieka i Integracji Europejskiej"
+  ],
+  "2026-05-06": [
+    "Europejski Dzień Bezpieczeństwa Ruchu Drogowego"
+  ],
+  "2026-05-08": [
+    "Dzień Zwycięstwa",
+    "Dzień Bibliotekarza i Bibliotek",
+    "Światowy Dzień Czerwonego Krzyża i Czerwonego Półksiężyca"
+  ],
+  "2026-05-09": [
+    "Dzień Europy (Święto Unii Europejskiej)"
+  ],
+  "2026-05-11": [
+    "Dzień bez Śmiecenia"
+  ],
+  "2026-05-12": [
+    "Światowy Dzień Ptaków Wędrownych",
+    "Międzynarodowy Dzień Pielęgniarek i Położnych",
+    "Zimnych ogrodników (Pankracego)"
+  ],
+  "2026-05-13": [
+    "Matki Bożej Fatimskiej",
+    "Zimnych ogrodników (Serwacego)"
+  ],
+  "2026-05-14": [
+    "Dzień Farmaceuty",
+    "Zimnych ogrodników (Bonifacego)"
+  ],
+  "2026-05-15": [
+    "Dzień Polskiej Niezapominajki",
+    "Święto Polskiej Muzyki i Plastyki",
+    "Międzynarodowy Dzień Rodziny"
+  ],
+  "2026-05-16": [
+    "Święto Straży Granicznej"
+  ],
+  "2026-05-17": [
+    "Międzynarodowy Dzień Pamięci ofiar AIDS",
+    "Światowy Dzień Telekomunikacji",
+    "Wniebowstąpienie"
+  ],
+  "2026-05-18": [
+    "Dzień Mostowca",
+    "Międzynarodowy Dzień Muzeów"
+  ],
+  "2026-05-19": [
+    "Dzień Dobrych Uczynków"
+  ],
+  "2026-05-20": [
+    "Międzynarodowy Dzień Pszczół"
+  ],
+  "2026-05-21": [
+    "Dzień Kadeta",
+    "Światowy Dzień Różnorodności Kulturowej",
+    "Światowy Dzień Kosmosu"
+  ],
+  "2026-05-22": [
+    "Międzynarodowy Dzień Różnorodności Biologicznej",
+    "Dzień Praw Zwierząt"
+  ],
+  "2026-05-23": [
+    "Dzień Wymiaru Sprawiedliwości",
+    "Światowy Dzień Żółwia"
+  ],
+  "2026-05-24": [
+    "Zesłanie Ducha Świętego (Zielone Świątki)",
+    "Europejski Dzień Parków Narodowych",
+    "Święto Wojsk Specjalnych"
+  ],
+  "2026-05-25": [
+    "Dzień Piwowara",
+    "Międzynarodowy Dzień Dzieci Zaginionych",
+    "Najświętszej Maryi Panny",
+    "Matki Kościoła"
+  ],
+  "2026-05-26": [
+    "Dzień Matki"
+  ],
+  "2026-05-27": [
+    "Dzień Samorządu Terytorialnego"
+  ],
+  "2026-05-28": [
+    "Święto Jezusa Chrystusa",
+    "Najwyższego i Wiecznego Kapłana"
+  ],
+  "2026-05-29": [
+    "Dzień Działacza Kultury i Drukarza",
+    "Dzień Weterana Działań poza Granicami Państwa",
+    "Międzynarodowy Dzień Uczestników Misji Pokojowych ONZ"
+  ],
+  "2026-05-30": [
+    "Dzień Rodzicielstwa Zastępczego"
+  ],
+  "2026-05-31": [
+    "Dzień Bociana Białego",
+    "Światowy Dzień Bez Papierosa",
+    "Uroczystość Trójcy Przenajświętszej"
+  ],
+  "2026-06-01": [
+    "Dzień bez Alkoholu",
+    "Światowy Dzień Mleka",
+    "Międzynarodowy Dzień Dziecka"
+  ],
+  "2026-06-03": [
+    "Światowy Dzień Roweru"
+  ],
+  "2026-06-04": [
+    "Boże Ciało",
+    "Międzynarodowy Dzień Dzieci Będących Ofiarami Agresji",
+    "Dzień Wolności i Praw Obywatelskich"
+  ],
+  "2026-06-05": [
+    "Światowy Dzień Ochrony Środowiska Naturalnego"
+  ],
+  "2026-06-08": [
+    "Światowy Dzień Oceanów"
+  ],
+  "2026-06-09": [
+    "Międzynarodowy Dzień Archiwów"
+  ],
+  "2026-06-12": [
+    "Święto BOR",
+    "Światowy Dzień Sprzeciwu wobec Pracy Dzieci"
+  ],
+  "2026-06-13": [
+    "Święto Żandarmerii Wojskowej",
+    "Święto Niepokalanego Serca Maryi"
+  ],
+  "2026-06-14": [
+    "Narodowy Dzień Pamięci Ofiar Niemieckich Nazistowskich Obozów Koncentracyjnych i Obozów Zagłady",
+    "Światowy Dzień Krwiodawcy"
+  ],
+  "2026-06-15": [
+    "Ogólnopolski Dzień Dogoterapii",
+    "Światowy Dzień Wiatru"
+  ],
+  "2026-06-16": [
+    "Międzynarodowy Dzień Pomocy Dzieciom Afrykańskim"
+  ],
+  "2026-06-17": [
+    "Święto Wojsk Pancernych i Zmechanizowanych – Dzień Czołgisty",
+    "Światowy Dzień Walki z Pustynnieniem i Suszą"
+  ],
+  "2026-06-20": [
+    "Narodowy Dzień Powstań Śląskich",
+    "Światowy Dzień Uchodźcy"
+  ],
+  "2026-06-21": [
+    "Pierwszy Dzień Lata - najdłuższy dzień roku",
+    "Międzynarodowy Dzień Jogi",
+    "Święto Muzyki",
+    "Dzień Przedsiębiorcy"
+  ],
+  "2026-06-23": [
+    "Dzień Służby Publicznej",
+    "Noc Świętojańska",
+    "Dzień Ojca"
+  ],
+  "2026-06-24": [
+    "Światowy Dzień Chorych na Osteoporozę"
+  ],
+  "2026-06-25": [
+    "Dzień Marynarza"
+  ],
+  "2026-06-26": [
+    "Koniec zajęć w szkołach",
+    "Międzynarodowy Dzień Pomocy Ofiarom Tortur",
+    "Międzynarodowy Dzień Walki z Narkomanią"
+  ],
+  "2026-06-27": [
+    "Światowy Dzień Rybołówstwa"
+  ],
+  "2026-06-28": [
+    "Narodowy Dzień Pamięci Poznańskiego Czerwca 1956"
+  ],
+  "2026-06-29": [
+    "Święto Służby Więziennej",
+    "Uroczystość św. Piotra i Pawła",
+    "Dzień Ratownika WOPR"
+  ],
+  "2026-06-30": [
+    "Międzynarodowy Dzień Planetoid",
+    "Dzień Walki z Przewlekłą Niewydolnością Żylną"
+  ],
+  "2026-07-01": [
+    "Dzień Spółdzielczości",
+    "Światowy Dzień Architektury"
+  ],
+  "2026-07-02": [
+    "Dzień Dziennikarza"
+  ],
+  "2026-07-06": [
+    "Międzynarodowy Dzień Pocałunku"
+  ],
+  "2026-07-11": [
+    "Narodowy Dzień Pamięci Ofiar Ludobójstwa dokonanego przez ukraińskich nacjonalistów na obywatelach II Rzeczypospolitej Polskiej",
+    "Światowy Dzień Ludności"
+  ],
+  "2026-07-12": [
+    "Dzień Walki i Męczeństwa Wsi Polskiej"
+  ],
+  "2026-07-18": [
+    "Międzynarodowy Dzień Nelsona Mandeli"
+  ],
+  "2026-07-20": [
+    "Międzynarodowy Dzień Szachów"
+  ],
+  "2026-07-24": [
+    "Święto Policji"
+  ],
+  "2026-07-25": [
+    "Dzień Bezpiecznego Kierowcy"
+  ],
+  "2026-07-30": [
+    "Międzynarodowy Dzień Przyjaźni"
+  ],
+  "2026-07-31": [
+    "Dzień Skarbowości"
+  ],
+  "2026-08-01": [
+    "Narodowy Dzień Pamięci Powstania Warszawskiego"
+  ],
+  "2026-08-02": [
+    "Światowy Dzień Pamięci o Zagładzie Romów"
+  ],
+  "2026-08-06": [
+    "Przemienienie Pańskie"
+  ],
+  "2026-08-10": [
+    "Dzień Przewodników i Ratowników Górskich"
+  ],
+  "2026-08-12": [
+    "Międzynarodowy Dzień Młodzieży"
+  ],
+  "2026-08-13": [
+    "Międzynarodowy Dzień Osób Leworęcznych"
+  ],
+  "2026-08-14": [
+    "Dzień Energetyka"
+  ],
+  "2026-08-15": [
+    "Święto Wojska Polskiego",
+    "Wniebowzięcie Najświętszej Maryi Panny"
+  ],
+  "2026-08-19": [
+    "Światowy Dzień Pomocy Humanitarnej"
+  ],
+  "2026-08-22": [
+    "Międzynarodowy Dzień Upamiętniający Ofiary Aktów Przemocy ze względu na Religię lub Wyznanie",
+    "Najświętsza Maryja Panna Królowa"
+  ],
+  "2026-08-23": [
+    "Międzynarodowy Dzień Pamięci o Handlu Niewolnikami i jego Zniesieniu",
+    "Europejski Dzień Pamięci Ofiar Stalinizmu i Nazizmu",
+    "Święto Lotnictwa"
+  ],
+  "2026-08-25": [
+    "Dzień polskiej żywności"
+  ],
+  "2026-08-26": [
+    "Międzynarodowy Dzień Psa"
+  ],
+  "2026-08-28": [
+    "Święto Lotnictwa Polskiego"
+  ],
+  "2026-08-29": [
+    "Dzień Straży Gminnej",
+    "Międzynarodowy Dzień Sprzeciwu wobec Prób Jądrowych"
+  ],
+  "2026-08-30": [
+    "Międzynarodowy Dzień Pamięci Osób Zaginionych"
+  ],
+  "2026-08-31": [
+    "Dzień Solidarności i Wolności"
+  ],
+  "2026-09-01": [
+    "Początek zajęć w szkołach",
+    "Dzień Weterana Walk o Niepodległość Rzeczypospolitej Polskiej",
+    "Rocznica Wybuchu II Wojny Światowej"
+  ],
+  "2026-09-08": [
+    "Dzień Ratownika Medycznego",
+    "Dzień Dobrej Wiadomości",
+    "Międzynarodowy Dzień Piśmiennictwa",
+    "Międzynarodowy Dzień Walki z Analfabetyzmem"
+  ],
+  "2026-09-09": [
+    "Międzynarodowy Dzień Urody"
+  ],
+  "2026-09-10": [
+    "Światowy Dzień Przeciwdziałania Samobójstwom",
+    "Dzień Solidarności z Osobami Chorymi na Schizofrenię"
+  ],
+  "2026-09-12": [
+    "Światowy Dzień Pierwszej Pomocy",
+    "Święto Wojsk Lądowych"
+  ],
+  "2026-09-13": [
+    "Dzień Programisty"
+  ],
+  "2026-09-15": [
+    "Międzynarodowy Dzień Demokracji",
+    "Europejski Dzień Prostaty"
+  ],
+  "2026-09-16": [
+    "Międzynarodowy Dzień Ochrony Warstwy Ozonowej"
+  ],
+  "2026-09-17": [
+    "Dzień Sybiraka"
+  ],
+  "2026-09-18": [
+    "Dzień Geologii"
+  ],
+  "2026-09-19": [
+    "Dzień Dzikiej Flory",
+    "Fauny i Naturalnych Siedlisk"
+  ],
+  "2026-09-21": [
+    "Światowy Dzień Osób z Chorobą Alzheimera",
+    "Dzień Służby Celnej",
+    "Międzynarodowy Dzień Pokoju"
+  ],
+  "2026-09-22": [
+    "Międzynarodowy Dzień bez Samochodu"
+  ],
+  "2026-09-23": [
+    "Początek Astronomicznej Jesieni",
+    "Międzynarodowy Dzień Języków Migowych"
+  ],
+  "2026-09-26": [
+    "Dzień Aptekarza"
+  ],
+  "2026-09-27": [
+    "Dzień Polskiego Państwa Podziemnego",
+    "Światowy Dzień Turystyki",
+    "Światowy Dzień Serca",
+    "Międzynarodowy Dzień Głuchych"
+  ],
+  "2026-09-28": [
+    "Światowy Dzień Walki z Wścieklizną"
+  ],
+  "2026-09-30": [
+    "Międzynarodowy Dzień Tłumacza",
+    "Dzień Chłopaka"
+  ],
+  "2026-10-01": [
+    "Europejski Dzień Ptaków",
+    "Światowy Dzień Wegetarianizmu",
+    "Międzynarodowy Dzień Ludzi Starszych",
+    "Międzynarodowy Dzień Lekarza",
+    "Międzynarodowy Dzień Muzyki"
+  ],
+  "2026-10-02": [
+    "Światowy Dzień Zwierząt Hodowlanych",
+    "Międzynarodowy Dzień Bez Przemocy"
+  ],
+  "2026-10-04": [
+    "Światowy Dzień Zwierząt"
+  ],
+  "2026-10-05": [
+    "Światowy Dzień Mieszkalnictwa",
+    "Światowy Dzień Nauczyciela"
+  ],
+  "2026-10-06": [
+    "Święto Inspektoratu Wsparcia Sił Zbrojnych",
+    "Światowy Dzień Mózgowego Porażenia Dziecięcego"
+  ],
+  "2026-10-09": [
+    "Dzień Znaczka Pocztowego",
+    "Światowy Dzień Poczty"
+  ],
+  "2026-10-10": [
+    "Dzień Drzewa",
+    "Światowy Dzień Zdrowia Psychicznego"
+  ],
+  "2026-10-11": [
+    "Międzynarodowy Dzień Dziewczynek"
+  ],
+  "2026-10-12": [
+    "Dzień Bezpiecznego Komputera",
+    "Światowy Dzień Chorób Reumatycznych"
+  ],
+  "2026-10-13": [
+    "Międzynarodowy Dzień Ograniczania Skutków Katastrof",
+    "Dzień Dawcy Szpiku",
+    "Dzień Ratownictwa Medycznego"
+  ],
+  "2026-10-14": [
+    "Światowy Dzień Normalizacji",
+    "Dzień Nauczyciela (Dzień Edukacji Narodowej)"
+  ],
+  "2026-10-15": [
+    "Światowy Dzień Mycia Rąk",
+    "Międzynarodowy Dzień Kobiet Wiejskich",
+    "Dzień Dziecka Utraconego"
+  ],
+  "2026-10-16": [
+    "Światowy Dzień Żywności",
+    "Dzień Papieża Jana Pawła II"
+  ],
+  "2026-10-17": [
+    "Międzynarodowy Dzień Walki z Ubóstwem"
+  ],
+  "2026-10-18": [
+    "Dzień Pracownika Służby Zdrowia",
+    "Światowy Dzień Monitorowania Wody",
+    "Światowy Dzień Menopauzy i Andropauzy",
+    "Dzień Łączności",
+    "Dzień Poczty Polskiej"
+  ],
+  "2026-10-19": [
+    "Narodowy Dzień Pamięci Duchownych Niezłomnych"
+  ],
+  "2026-10-20": [
+    "Światowy Dzień Statystyki",
+    "Światowy Dzień Osteoporozy"
+  ],
+  "2026-10-22": [
+    "Międzynarodowy Dzień Świadomości Jąkania"
+  ],
+  "2026-10-24": [
+    "Światowy Dzień Informacji Na Temat Rozwoju",
+    "Dzień Organizacji Narodów Zjednoczonych"
+  ],
+  "2026-10-25": [
+    "Zmiana czasu z letniego na zimowy",
+    "Dzień Ustawy o Ochronie Zwierząt"
+  ],
+  "2026-10-27": [
+    "Światowy Dzień Dziedzictwa Audiowizualnego",
+    "Światowy Dzień Modlitwy o Pokój"
+  ],
+  "2026-10-29": [
+    "Światowy Dzień Chorych na Łuszczycę"
+  ],
+  "2026-10-31": [
+    "Światowy Dzień Oszczędności",
+    "Halloween"
+  ],
+  "2026-11-01": [
+    "Wszystkich Świętych"
+  ],
+  "2026-11-02": [
+    "Dzień zaduszny"
+  ],
+  "2026-11-03": [
+    "Święto Myśliwych (Dzień Św. Huberta)"
+  ],
+  "2026-11-06": [
+    "Międzynarodowy Dzień Zapobiegania Wyzyskowi Środowiska Naturalnego podczas Wojen i Konfliktów Zbrojnych"
+  ],
+  "2026-11-09": [
+    "Światowy Dzień Jakości",
+    "Międzynarodowy Dzień Walki z Faszyzmem i Antysemityzmem"
+  ],
+  "2026-11-10": [
+    "Światowy Dzień Nauki dla Pokoju i Rozwoju"
+  ],
+  "2026-11-11": [
+    "Narodowe Święto Niepodległości"
+  ],
+  "2026-11-13": [
+    "Międzynarodowy Dzień Niewidomych"
+  ],
+  "2026-11-14": [
+    "Światowy Dzień Chorych na Cukrzycę"
+  ],
+  "2026-11-15": [
+    "Międzynarodowy Dzień Pamięci Ofiar Wypadków Drogowych"
+  ],
+  "2026-11-16": [
+    "Międzynarodowy Dzień Tolerancji"
+  ],
+  "2026-11-17": [
+    "Międzynarodowy Dzień Studenta",
+    "Ogólnopolski Dzień bez Długów"
+  ],
+  "2026-11-19": [
+    "Światowy Dzień Przewlekłej Obturacyjnej Choroby Płuc",
+    "Światowy Dzień Rzucania Palenia"
+  ],
+  "2026-11-20": [
+    "Dzień Uprzemysłowienia Afryki"
+  ],
+  "2026-11-21": [
+    "Dzień Pracownika Socjalnego",
+    "Dzień Życzliwości",
+    "Światowy Dzień Telewizji"
+  ],
+  "2026-11-22": [
+    "22-26 listopada Dni Honorowego Krwiodawstwa Polskiego Czerwonego Krzyża",
+    "Uroczystość Jezusa Chrystusa",
+    "Króla Wszechświata"
+  ],
+  "2026-11-23": [
+    "22-26 listopada Dni Honorowego Krwiodawstwa Polskiego Czerwonego Krzyża"
+  ],
+  "2026-11-24": [
+    "22-26 listopada Dni Honorowego Krwiodawstwa Polskiego Czerwonego Krzyża"
+  ],
+  "2026-11-25": [
+    "Światowy Dzień Pluszowego Misia",
+    "Światowy Dzień bez Futra",
+    "22-26 listopada Dni Honorowego Krwiodawstwa Polskiego Czerwonego Krzyża",
+    "Międzynarodowy Dzień Eliminacji Przemocy wobec Kobiet",
+    "Dzień Kolejarza"
+  ],
+  "2026-11-26": [
+    "22-26 listopada Dni Honorowego Krwiodawstwa Polskiego Czerwonego Krzyża"
+  ],
+  "2026-11-29": [
+    "Międzynarodowy Dzień Solidarności z Narodem Palestyńskim",
+    "Andrzejki (w nocy z 29 na 30)",
+    "Dzień podchorążego",
+    "I niedziela Adwentu"
+  ],
+  "2026-12-01": [
+    "Światowy Dzień Walki z AIDS"
+  ],
+  "2026-12-02": [
+    "Międzynarodowy Dzień Upamiętniający Zniesienie Niewolnictwa"
+  ],
+  "2026-12-03": [
+    "Międzynarodowy Dzień Niepełnosprawnych"
+  ],
+  "2026-12-04": [
+    "Barbórka (Dzień Górnika",
+    "Naftowca i Gazownika)"
+  ],
+  "2026-12-05": [
+    "Światowy Dzień Gleby",
+    "Międzynarodowy Dzień Wolontariusza"
+  ],
+  "2026-12-06": [
+    "Dzień św. Mikołaja",
+    "II niedziela Adwentu"
+  ],
+  "2026-12-07": [
+    "Międzynarodowy Dzień Lotnictwa Cywilnego"
+  ],
+  "2026-12-08": [
+    "Uroczystość Niepokalanego Poczęcia Najświętszej Maryi Panny"
+  ],
+  "2026-12-09": [
+    "Międzynarodowy Dzień Przeciwdziałania Korupcji"
+  ],
+  "2026-12-10": [
+    "Dzień Odlewnika",
+    "Dzień Ochrony Praw Dziecka",
+    "Międzynarodowy Dzień Praw Człowieka"
+  ],
+  "2026-12-11": [
+    "Międzynarodowy Dzień Terenów Górskich"
+  ],
+  "2026-12-13": [
+    "Światowy Dzień Telewizji dla Dzieci",
+    "Dzień Pamięci Ofiar Stanu Wojennego",
+    "Dzień Księgarza",
+    "III niedziela Adwentu"
+  ],
+  "2026-12-17": [
+    "Dzień bez Przekleństw"
+  ],
+  "2026-12-18": [
+    "Międzynarodowy Dzień Emigrantów"
+  ],
+  "2026-12-19": [
+    "Dzień Narodów Zjednoczonych dla Współpracy Południe - Południe"
+  ],
+  "2026-12-20": [
+    "Dzień Ryby",
+    "Międzynarodowy Dzień Solidarności",
+    "IV niedziela Adwentu"
+  ],
+  "2026-12-21": [
+    "Początek astronomicznej zimy - najkrótszy dzień roku"
+  ],
+  "2026-12-24": [
+    "Wigilia Bożego Narodzenia"
+  ],
+  "2026-12-25": [
+    "Boże Narodzenie (pierwszy dzień)"
+  ],
+  "2026-12-26": [
+    "Boże Narodzenie (drugi dzień)"
+  ],
+  "2026-12-27": [
+    "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego",
+    "Święto Świętej Rodziny"
+  ],
+  "2026-12-31": [
+    "Sylwester"
+  ],
+  "2027-01-01": [
+    "Nowy Rok",
+    "Światowy Dzień Pokoju",
+    "Świętej Bożej Rodzicielki Maryi"
+  ],
+  "2027-01-06": [
+    "Trzech Króli (Objawienie Pańskie)",
+    "Dzień Filatelisty"
+  ],
+  "2027-01-09": [
+    "Dzień Ligi Ochrony Przyrody"
+  ],
+  "2027-01-10": [
+    "Chrzest Pański"
+  ],
+  "2027-01-11": [
+    "Dzień Sprzątania Biurka"
+  ],
+  "2027-01-15": [
+    "Dzień Wikipedii"
+  ],
+  "2027-01-17": [
+    "Dzień Dialogu z Judaizmem (obchodzony przez Kościół Katolicki)"
+  ],
+  "2027-01-18": [
+    "Dzień Kubusia Puchatka"
+  ],
+  "2027-01-21": [
+    "Dzień Babci"
+  ],
+  "2027-01-22": [
+    "Dzień Dziadka"
+  ],
+  "2027-01-24": [
+    "Światowy Dzień Środków Masowego Przekazu"
+  ],
+  "2027-01-25": [
+    "Dzień Sekretarki i Asystentki"
+  ],
+  "2027-01-26": [
+    "Dzień Dialogu z Islamem",
+    "Dzień Transplantacji",
+    "Światowy Dzień Celnictwa"
+  ],
+  "2027-01-27": [
+    "Międzynarodowy Dzień Pamięci o Ofiarach Holokaustu"
+  ],
+  "2027-01-28": [
+    "Międzynarodowy Dzień Mobilizacji przeciwko Wojnie Nuklearnej"
+  ],
+  "2027-02-02": [
+    "Światowy Dzień Życia Konsekrowanego",
+    "Ofiarowanie Pańskie (Matki Boskiej Gromnicznej)",
+    "Światowy Dzień Obszarów Wodno-Błotnych",
+    "Dzień Handlowca"
+  ],
+  "2027-02-04": [
+    "Międzynarodowy Dzień Walki z Rakiem",
+    "Tłusty czwartek"
+  ],
+  "2027-02-06": [
+    "Ostatnia sobota karnawału"
+  ],
+  "2027-02-09": [
+    "Międzynarodowy Dzień Pizzy",
+    "Dzień Bezpiecznego Internetu",
+    "Ostatki"
+  ],
+  "2027-02-10": [
+    "Popielec"
+  ],
+  "2027-02-11": [
+    "Europejski Dzień Numeru 112",
+    "Światowy Dzień Chorych"
+  ],
+  "2027-02-12": [
+    "Dzień Darwina"
+  ],
+  "2027-02-14": [
+    "Dzień Zakochanych (Walentynki)",
+    "I Niedziela Wielkiego Postu"
+  ],
+  "2027-02-15": [
+    "Światowy Dzień Młodzieży Prawosławnej"
+  ],
+  "2027-02-17": [
+    "Dzień Służby Cywilnej",
+    "Dzień Kota"
+  ],
+  "2027-02-19": [
+    "Dzień Nauki Polskiej"
+  ],
+  "2027-02-20": [
+    "Międzynarodowy Dzień Palących Fajkę",
+    "Światowy Dzień Sprawiedliwości Społecznej"
+  ],
+  "2027-02-21": [
+    "Międzynarodowy Dzień Języka Ojczystego",
+    "II Niedziela Wielkiego Postu"
+  ],
+  "2027-02-22": [
+    "Dzień Ofiar Przestępstw"
+  ],
+  "2027-02-23": [
+    "Ogólnopolski Dzień Walki z Depresją"
+  ],
+  "2027-02-28": [
+    "Dzień Chorób Rzadkich",
+    "III Niedziela Wielkiego Postu"
+  ],
+  "2027-03-01": [
+    "Międzynarodowy Dzień Obrony Cywilnej",
+    "Światowy Dzień Świadomości Autoagresji",
+    "Międzynarodowy Dzień Walki Przeciw Zbrojeniom Atomowym",
+    "Narodowy Dzień Pamięci Żołnierzy Wyklętych"
+  ],
+  "2027-03-03": [
+    "Międzynarodowy Dzień Pisarzy"
+  ],
+  "2027-03-04": [
+    "Światowy Dzień Inżyniera"
+  ],
+  "2027-03-05": [
+    "Dzień Geodety Europejskiego i Geoinformacji",
+    "Dzień Teściowej"
+  ],
+  "2027-03-06": [
+    "Europejski Dzień Logopedy"
+  ],
+  "2027-03-07": [
+    "IV Niedziela Wielkiego Postu"
+  ],
+  "2027-03-08": [
+    "Międzynarodowy Dzień Kobiet"
+  ],
+  "2027-03-09": [
+    "Dzień Statystyki Polskiej"
+  ],
+  "2027-03-10": [
+    "Dzień Mężczyzn"
+  ],
+  "2027-03-12": [
+    "Światowy Dzień Drzemki w Pracy"
+  ],
+  "2027-03-14": [
+    "Światowy Dzień Liczby Pi",
+    "V Niedziela Wielkiego Postu"
+  ],
+  "2027-03-15": [
+    "Dzień Piekarzy i Cukierników",
+    "Międzynarodowy Dzień (Praw) Konsumenta"
+  ],
+  "2027-03-19": [
+    "Dzień Jedności Kaszubów",
+    "Uroczystość św. Józefa"
+  ],
+  "2027-03-20": [
+    "Światowy Dzień Zdrowia Jamy Ustnej",
+    "Początek astronomicznej wiosny",
+    "Międzynarodowy Dzień Szczęścia"
+  ],
+  "2027-03-21": [
+    "Dzień Wagarowicza",
+    "Międzynarodowy Dzień Lasów",
+    "Międzynarodowy Dzień Walki z Dyskryminacją Rasową",
+    "Międzynarodowy Dzień Poezji",
+    "Niedziela Palmowa"
+  ],
+  "2027-03-22": [
+    "Dzień Ochrony Bałtyku",
+    "Światowy Dzień Wody",
+    "Ogólnopolski Dzień Trzeźwości",
+    "Wielki Poniedziałek"
+  ],
+  "2027-03-23": [
+    "Dzień Przyjaźni Polsko-Węgierskiej",
+    "Międzynarodowy Dzień Meteorologii",
+    "Wielki Wtorek"
+  ],
+  "2027-03-24": [
+    "Narodowy Dzień Życia",
+    "Światowy Dzień Walki z Gruźlicą",
+    "Wielka Środa"
+  ],
+  "2027-03-25": [
+    "Wielki Czwartek"
+  ],
+  "2027-03-26": [
+    "Wielki Piątek"
+  ],
+  "2027-03-27": [
+    "Międzynarodowy Dzień Teatru",
+    "Wielka Sobota"
+  ],
+  "2027-03-28": [
+    "Wielkanoc",
+    "Zmiana czasu z zimowego na letni"
+  ],
+  "2027-03-29": [
+    "Poniedziałek Wielkanocny"
+  ],
+  "2027-03-30": [
+    "Wtorek Wielkanocny"
+  ],
+  "2027-03-31": [
+    "Środa Oktawy Wielkanocnej"
+  ],
+  "2027-04-01": [
+    "Międzynarodowy Dzień Ptaków",
+    "Prima Aprilis",
+    "Czwartek Oktawy Wielkanocnej"
+  ],
+  "2027-04-02": [
+    "Światowy Dzień Autyzmu",
+    "Międzynarodowy Dzień Książki Dla Dzieci",
+    "Piątek Oktawy Wielkanocnej"
+  ],
+  "2027-04-03": [
+    "Sobota Oktawy Wielkanocnej"
+  ],
+  "2027-04-04": [
+    "Międzynarodowy Dzień Wiedzy o Minach i Działań Zapobiegających Minom",
+    "Święto Wojskowej Służby Zdrowia",
+    "II Niedziela Wielkanocna",
+    "Święto Bożego Miłosierdzia"
+  ],
+  "2027-04-05": [
+    "Dzień Leśnika i Drzewiarza (Polska)",
+    "Zwiastowanie Pańskie (Dzień Świętości Życia)"
+  ],
+  "2027-04-06": [
+    "Międzynarodowy Dzień Sportu na rzecz Rozwoju i Pokoju"
+  ],
+  "2027-04-07": [
+    "Światowy Dzień Zdrowia"
+  ],
+  "2027-04-08": [
+    "Międzynarodowy Dzień Romów"
+  ],
+  "2027-04-11": [
+    "Ogólnopolski Dzień Walki z Bezrobociem",
+    "Światowy Dzień Osób z Chorobą Parkinsona",
+    "Dzień Radia",
+    "III Niedziela Wielkanocna"
+  ],
+  "2027-04-12": [
+    "Międzynarodowy Dzień Lotnictwa i Kosmonautyki"
+  ],
+  "2027-04-13": [
+    "Dzień Pamięci Ofiar Zbrodni Katyńskiej"
+  ],
+  "2027-04-14": [
+    "Dzień Ludzi Bezdomnych (Polska)",
+    "Święto Chrztu Polski"
+  ],
+  "2027-04-15": [
+    "Międzynarodowy Dzień Kombatanta"
+  ],
+  "2027-04-16": [
+    "Dzień Sapera"
+  ],
+  "2027-04-17": [
+    "Światowy Dzień Chorych na Hemofilię"
+  ],
+  "2027-04-18": [
+    "Dzień Pacjenta w Śpiączce",
+    "Międzynarodowy Dzień Ochrony Zabytków",
+    "Niedziela Dobrego Pasterza"
+  ],
+  "2027-04-19": [
+    "Dzień Pamięci Ofiar Holocaustu i Powstania w Getcie Warszawskim"
+  ],
+  "2027-04-20": [
+    "Międzynarodowy Dzień Wolnej Prasy"
+  ],
+  "2027-04-22": [
+    "Międzynarodowy Dzień Ziemi"
+  ],
+  "2027-04-23": [
+    "Światowy Dzień Książki i Praw Autorskich"
+  ],
+  "2027-04-24": [
+    "Dzień Zwierząt Laboratoryjnych",
+    "Międzynarodowy Dzień Solidarności Młodzieży"
+  ],
+  "2027-04-25": [
+    "Dzień Psa Poszukiwawczo-Ratowniczego",
+    "Międzynarodowy Dzień Świadomości Zagrożenia Hałasem",
+    "Międzynarodowy Dzień DNA",
+    "Światowy Dzień Malarii",
+    "Międzynarodowy Dzień Sekretarki",
+    "V Niedziela Wielkanocna"
+  ],
+  "2027-04-26": [
+    "Światowy Dzień Własności Intelektualnej",
+    "Dzień Drogowca i Transportowca (Polska)"
+  ],
+  "2027-04-27": [
+    "Światowy Dzień Grafika"
+  ],
+  "2027-04-28": [
+    "Światowy Dzień Bezpieczeństwa i Ochrony Zdrowia w Pracy"
+  ],
+  "2027-04-29": [
+    "Dzień Męczeństwa Duchowieństwa Polskiego",
+    "Międzynarodowy Dzień Tańca"
+  ],
+  "2027-04-30": [
+    "Międzynarodowy Dzień Jazzu"
+  ],
+  "2027-05-01": [
+    "Międzynarodowe Święto Pracy"
+  ],
+  "2027-05-02": [
+    "Dzień Polonii i Polaków za Granicą",
+    "Dzień Flagi Rzeczypospolitej Polskiej"
+  ],
+  "2027-05-03": [
+    "Święto Konstytucji 3 Maja",
+    "NMP Królowej Polski",
+    "Światowy Dzień Wolności Prasy",
+    "Międzynarodowy Dzień Astmy i Alergii"
+  ],
+  "2027-05-04": [
+    "Dzień Hutnika",
+    "Dzień Strażaka"
+  ],
+  "2027-05-05": [
+    "Dzień Godności Osoby z Niepełnosprawnością Intelektualną",
+    "Dzień Tolerancji",
+    "Praw Człowieka i Integracji Europejskiej"
+  ],
+  "2027-05-06": [
+    "Europejski Dzień Bezpieczeństwa Ruchu Drogowego"
+  ],
+  "2027-05-08": [
+    "Dzień Zwycięstwa",
+    "Dzień Bibliotekarza i Bibliotek",
+    "Światowy Dzień Czerwonego Krzyża i Czerwonego Półksiężyca"
+  ],
+  "2027-05-09": [
+    "Dzień Europy (Święto Unii Europejskiej)",
+    "Wniebowstąpienie"
+  ],
+  "2027-05-11": [
+    "Dzień bez Śmiecenia"
+  ],
+  "2027-05-12": [
+    "Światowy Dzień Ptaków Wędrownych",
+    "Międzynarodowy Dzień Pielęgniarek i Położnych",
+    "Zimnych ogrodników (Pankracego)"
+  ],
+  "2027-05-13": [
+    "Matki Bożej Fatimskiej",
+    "Zimnych ogrodników (Serwacego)"
+  ],
+  "2027-05-14": [
+    "Dzień Farmaceuty",
+    "Zimnych ogrodników (Bonifacego)"
+  ],
+  "2027-05-15": [
+    "Dzień Polskiej Niezapominajki",
+    "Święto Polskiej Muzyki i Plastyki",
+    "Międzynarodowy Dzień Rodziny"
+  ],
+  "2027-05-16": [
+    "Zesłanie Ducha Świętego (Zielone Świątki)",
+    "Święto Straży Granicznej",
+    "Międzynarodowy Dzień Pamięci ofiar AIDS"
+  ],
+  "2027-05-17": [
+    "Światowy Dzień Telekomunikacji",
+    "Najświętszej Maryi Panny",
+    "Matki Kościoła"
+  ],
+  "2027-05-18": [
+    "Dzień Mostowca",
+    "Międzynarodowy Dzień Muzeów"
+  ],
+  "2027-05-19": [
+    "Dzień Dobrych Uczynków"
+  ],
+  "2027-05-20": [
+    "Międzynarodowy Dzień Pszczół",
+    "Święto Jezusa Chrystusa",
+    "Najwyższego i Wiecznego Kapłana"
+  ],
+  "2027-05-21": [
+    "Dzień Kadeta",
+    "Światowy Dzień Różnorodności Kulturowej",
+    "Światowy Dzień Kosmosu"
+  ],
+  "2027-05-22": [
+    "Międzynarodowy Dzień Różnorodności Biologicznej",
+    "Dzień Praw Zwierząt"
+  ],
+  "2027-05-23": [
+    "Dzień Wymiaru Sprawiedliwości",
+    "Światowy Dzień Żółwia",
+    "Uroczystość Trójcy Przenajświętszej"
+  ],
+  "2027-05-24": [
+    "Święto Wojsk Specjalnych",
+    "Europejski Dzień Parków Narodowych"
+  ],
+  "2027-05-25": [
+    "Dzień Piwowara",
+    "Międzynarodowy Dzień Dzieci Zaginionych"
+  ],
+  "2027-05-26": [
+    "Dzień Matki"
+  ],
+  "2027-05-27": [
+    "Boże Ciało",
+    "Dzień Samorządu Terytorialnego"
+  ],
+  "2027-05-29": [
+    "Dzień Działacza Kultury i Drukarza",
+    "Dzień Weterana Działań poza Granicami Państwa",
+    "Międzynarodowy Dzień Uczestników Misji Pokojowych ONZ"
+  ],
+  "2027-05-30": [
+    "Dzień Rodzicielstwa Zastępczego"
+  ],
+  "2027-05-31": [
+    "Dzień Bociana Białego",
+    "Światowy Dzień Bez Papierosa"
+  ],
+  "2027-06-01": [
+    "Dzień bez Alkoholu",
+    "Światowy Dzień Mleka",
+    "Międzynarodowy Dzień Dziecka"
+  ],
+  "2027-06-03": [
+    "Światowy Dzień Roweru"
+  ],
+  "2027-06-04": [
+    "Dzień Wolności i Praw Obywatelskich",
+    "Międzynarodowy Dzień Dzieci Będących Ofiarami Agresji"
+  ],
+  "2027-06-05": [
+    "Światowy Dzień Ochrony Środowiska Naturalnego",
+    "Święto Niepokalanego Serca Maryi"
+  ],
+  "2027-06-08": [
+    "Światowy Dzień Oceanów"
+  ],
+  "2027-06-09": [
+    "Międzynarodowy Dzień Archiwów"
+  ],
+  "2027-06-12": [
+    "Święto BOR",
+    "Światowy Dzień Sprzeciwu wobec Pracy Dzieci"
+  ],
+  "2027-06-13": [
+    "Święto Żandarmerii Wojskowej"
+  ],
+  "2027-06-14": [
+    "Narodowy Dzień Pamięci Ofiar Niemieckich Nazistowskich Obozów Koncentracyjnych i Obozów Zagłady",
+    "Światowy Dzień Krwiodawcy"
+  ],
+  "2027-06-15": [
+    "Ogólnopolski Dzień Dogoterapii",
+    "Światowy Dzień Wiatru"
+  ],
+  "2027-06-16": [
+    "Międzynarodowy Dzień Pomocy Dzieciom Afrykańskim"
+  ],
+  "2027-06-17": [
+    "Święto Wojsk Pancernych i Zmechanizowanych – Dzień Czołgisty",
+    "Światowy Dzień Walki z Pustynnieniem i Suszą"
+  ],
+  "2027-06-20": [
+    "Narodowy Dzień Powstań Śląskich",
+    "Światowy Dzień Uchodźcy"
+  ],
+  "2027-06-21": [
+    "Pierwszy Dzień Lata - najdłuższy dzień roku",
+    "Międzynarodowy Dzień Jogi",
+    "Święto Muzyki",
+    "Dzień Przedsiębiorcy"
+  ],
+  "2027-06-23": [
+    "Dzień Służby Publicznej",
+    "Noc Świętojańska",
+    "Dzień Ojca"
+  ],
+  "2027-06-24": [
+    "Światowy Dzień Chorych na Osteoporozę"
+  ],
+  "2027-06-25": [
+    "Koniec zajęć w szkołach",
+    "Dzień Marynarza"
+  ],
+  "2027-06-26": [
+    "Międzynarodowy Dzień Pomocy Ofiarom Tortur",
+    "Międzynarodowy Dzień Walki z Narkomanią"
+  ],
+  "2027-06-27": [
+    "Światowy Dzień Rybołówstwa"
+  ],
+  "2027-06-28": [
+    "Narodowy Dzień Pamięci Poznańskiego Czerwca 1956"
+  ],
+  "2027-06-29": [
+    "Święto Służby Więziennej",
+    "Uroczystość św. Piotra i Pawła",
+    "Dzień Ratownika WOPR"
+  ],
+  "2027-06-30": [
+    "Międzynarodowy Dzień Planetoid",
+    "Dzień Walki z Przewlekłą Niewydolnością Żylną"
+  ],
+  "2027-07-01": [
+    "Dzień Spółdzielczości",
+    "Światowy Dzień Architektury"
+  ],
+  "2027-07-02": [
+    "Dzień Dziennikarza"
+  ],
+  "2027-07-06": [
+    "Międzynarodowy Dzień Pocałunku"
+  ],
+  "2027-07-11": [
+    "Narodowy Dzień Pamięci Ofiar Ludobójstwa dokonanego przez ukraińskich nacjonalistów na obywatelach II Rzeczypospolitej Polskiej",
+    "Światowy Dzień Ludności"
+  ],
+  "2027-07-12": [
+    "Dzień Walki i Męczeństwa Wsi Polskiej"
+  ],
+  "2027-07-18": [
+    "Międzynarodowy Dzień Nelsona Mandeli"
+  ],
+  "2027-07-20": [
+    "Międzynarodowy Dzień Szachów"
+  ],
+  "2027-07-24": [
+    "Święto Policji"
+  ],
+  "2027-07-25": [
+    "Dzień Bezpiecznego Kierowcy"
+  ],
+  "2027-07-30": [
+    "Międzynarodowy Dzień Przyjaźni"
+  ],
+  "2027-07-31": [
+    "Dzień Skarbowości"
+  ],
+  "2027-08-01": [
+    "Narodowy Dzień Pamięci Powstania Warszawskiego"
+  ],
+  "2027-08-02": [
+    "Światowy Dzień Pamięci o Zagładzie Romów"
+  ],
+  "2027-08-06": [
+    "Przemienienie Pańskie"
+  ],
+  "2027-08-10": [
+    "Dzień Przewodników i Ratowników Górskich"
+  ],
+  "2027-08-12": [
+    "Międzynarodowy Dzień Młodzieży"
+  ],
+  "2027-08-13": [
+    "Międzynarodowy Dzień Osób Leworęcznych"
+  ],
+  "2027-08-14": [
+    "Dzień Energetyka"
+  ],
+  "2027-08-15": [
+    "Święto Wojska Polskiego",
+    "Wniebowzięcie Najświętszej Maryi Panny"
+  ],
+  "2027-08-19": [
+    "Światowy Dzień Pomocy Humanitarnej"
+  ],
+  "2027-08-22": [
+    "Międzynarodowy Dzień Upamiętniający Ofiary Aktów Przemocy ze względu na Religię lub Wyznanie",
+    "Najświętsza Maryja Panna Królowa"
+  ],
+  "2027-08-23": [
+    "Międzynarodowy Dzień Pamięci o Handlu Niewolnikami i jego Zniesieniu",
+    "Europejski Dzień Pamięci Ofiar Stalinizmu i Nazizmu",
+    "Święto Lotnictwa"
+  ],
+  "2027-08-25": [
+    "Dzień polskiej żywności"
+  ],
+  "2027-08-26": [
+    "Międzynarodowy Dzień Psa"
+  ],
+  "2027-08-28": [
+    "Święto Lotnictwa Polskiego"
+  ],
+  "2027-08-29": [
+    "Dzień Straży Gminnej",
+    "Międzynarodowy Dzień Sprzeciwu wobec Prób Jądrowych"
+  ],
+  "2027-08-30": [
+    "Międzynarodowy Dzień Pamięci Osób Zaginionych"
+  ],
+  "2027-08-31": [
+    "Dzień Solidarności i Wolności"
+  ],
+  "2027-09-01": [
+    "Początek zajęć w szkołach",
+    "Dzień Weterana Walk o Niepodległość Rzeczypospolitej Polskiej",
+    "Rocznica Wybuchu II Wojny Światowej"
+  ],
+  "2027-09-08": [
+    "Dzień Ratownika Medycznego",
+    "Dzień Dobrej Wiadomości",
+    "Międzynarodowy Dzień Piśmiennictwa",
+    "Międzynarodowy Dzień Walki z Analfabetyzmem"
+  ],
+  "2027-09-09": [
+    "Międzynarodowy Dzień Urody"
+  ],
+  "2027-09-10": [
+    "Światowy Dzień Przeciwdziałania Samobójstwom",
+    "Dzień Solidarności z Osobami Chorymi na Schizofrenię"
+  ],
+  "2027-09-11": [
+    "Światowy Dzień Pierwszej Pomocy"
+  ],
+  "2027-09-12": [
+    "Święto Wojsk Lądowych"
+  ],
+  "2027-09-13": [
+    "Dzień Programisty"
+  ],
+  "2027-09-15": [
+    "Międzynarodowy Dzień Demokracji",
+    "Europejski Dzień Prostaty"
+  ],
+  "2027-09-16": [
+    "Międzynarodowy Dzień Ochrony Warstwy Ozonowej"
+  ],
+  "2027-09-17": [
+    "Dzień Sybiraka"
+  ],
+  "2027-09-18": [
+    "Dzień Geologii"
+  ],
+  "2027-09-19": [
+    "Dzień Dzikiej Flory",
+    "Fauny i Naturalnych Siedlisk"
+  ],
+  "2027-09-21": [
+    "Światowy Dzień Osób z Chorobą Alzheimera",
+    "Dzień Służby Celnej",
+    "Międzynarodowy Dzień Pokoju"
+  ],
+  "2027-09-22": [
+    "Międzynarodowy Dzień bez Samochodu"
+  ],
+  "2027-09-23": [
+    "Początek Astronomicznej Jesieni",
+    "Międzynarodowy Dzień Języków Migowych"
+  ],
+  "2027-09-26": [
+    "Dzień Aptekarza",
+    "Światowy Dzień Serca",
+    "Międzynarodowy Dzień Głuchych"
+  ],
+  "2027-09-27": [
+    "Dzień Polskiego Państwa Podziemnego",
+    "Światowy Dzień Turystyki"
+  ],
+  "2027-09-28": [
+    "Światowy Dzień Walki z Wścieklizną"
+  ],
+  "2027-09-30": [
+    "Międzynarodowy Dzień Tłumacza",
+    "Dzień Chłopaka"
+  ],
+  "2027-10-01": [
+    "Europejski Dzień Ptaków",
+    "Światowy Dzień Wegetarianizmu",
+    "Międzynarodowy Dzień Ludzi Starszych",
+    "Międzynarodowy Dzień Lekarza",
+    "Międzynarodowy Dzień Muzyki"
+  ],
+  "2027-10-02": [
+    "Światowy Dzień Zwierząt Hodowlanych",
+    "Międzynarodowy Dzień Bez Przemocy"
+  ],
+  "2027-10-04": [
+    "Światowy Dzień Mieszkalnictwa",
+    "Światowy Dzień Zwierząt"
+  ],
+  "2027-10-05": [
+    "Światowy Dzień Nauczyciela"
+  ],
+  "2027-10-06": [
+    "Święto Inspektoratu Wsparcia Sił Zbrojnych",
+    "Światowy Dzień Mózgowego Porażenia Dziecięcego"
+  ],
+  "2027-10-09": [
+    "Dzień Znaczka Pocztowego",
+    "Światowy Dzień Poczty"
+  ],
+  "2027-10-10": [
+    "Dzień Drzewa",
+    "Światowy Dzień Zdrowia Psychicznego"
+  ],
+  "2027-10-11": [
+    "Międzynarodowy Dzień Dziewczynek"
+  ],
+  "2027-10-12": [
+    "Dzień Bezpiecznego Komputera",
+    "Światowy Dzień Chorób Reumatycznych"
+  ],
+  "2027-10-13": [
+    "Międzynarodowy Dzień Ograniczania Skutków Katastrof",
+    "Dzień Dawcy Szpiku",
+    "Dzień Ratownictwa Medycznego"
+  ],
+  "2027-10-14": [
+    "Światowy Dzień Normalizacji",
+    "Dzień Nauczyciela (Dzień Edukacji Narodowej)"
+  ],
+  "2027-10-15": [
+    "Światowy Dzień Mycia Rąk",
+    "Międzynarodowy Dzień Kobiet Wiejskich",
+    "Dzień Dziecka Utraconego"
+  ],
+  "2027-10-16": [
+    "Światowy Dzień Żywności",
+    "Dzień Papieża Jana Pawła II"
+  ],
+  "2027-10-17": [
+    "Międzynarodowy Dzień Walki z Ubóstwem"
+  ],
+  "2027-10-18": [
+    "Dzień Pracownika Służby Zdrowia",
+    "Światowy Dzień Monitorowania Wody",
+    "Światowy Dzień Menopauzy i Andropauzy",
+    "Dzień Łączności",
+    "Dzień Poczty Polskiej"
+  ],
+  "2027-10-19": [
+    "Narodowy Dzień Pamięci Duchownych Niezłomnych"
+  ],
+  "2027-10-20": [
+    "Światowy Dzień Statystyki",
+    "Światowy Dzień Osteoporozy"
+  ],
+  "2027-10-22": [
+    "Międzynarodowy Dzień Świadomości Jąkania"
+  ],
+  "2027-10-24": [
+    "Światowy Dzień Informacji Na Temat Rozwoju",
+    "Dzień Organizacji Narodów Zjednoczonych"
+  ],
+  "2027-10-25": [
+    "Dzień Ustawy o Ochronie Zwierząt"
+  ],
+  "2027-10-27": [
+    "Światowy Dzień Dziedzictwa Audiowizualnego",
+    "Światowy Dzień Modlitwy o Pokój"
+  ],
+  "2027-10-29": [
+    "Światowy Dzień Chorych na Łuszczycę"
+  ],
+  "2027-10-31": [
+    "Zmiana czasu z letniego na zimowy",
+    "Światowy Dzień Oszczędności",
+    "Halloween"
+  ],
+  "2027-11-01": [
+    "Wszystkich Świętych"
+  ],
+  "2027-11-02": [
+    "Dzień zaduszny"
+  ],
+  "2027-11-03": [
+    "Święto Myśliwych (Dzień Św. Huberta)"
+  ],
+  "2027-11-06": [
+    "Międzynarodowy Dzień Zapobiegania Wyzyskowi Środowiska Naturalnego podczas Wojen i Konfliktów Zbrojnych"
+  ],
+  "2027-11-09": [
+    "Światowy Dzień Jakości",
+    "Międzynarodowy Dzień Walki z Faszyzmem i Antysemityzmem"
+  ],
+  "2027-11-10": [
+    "Światowy Dzień Nauki dla Pokoju i Rozwoju"
+  ],
+  "2027-11-11": [
+    "Narodowe Święto Niepodległości"
+  ],
+  "2027-11-13": [
+    "Międzynarodowy Dzień Niewidomych"
+  ],
+  "2027-11-14": [
+    "Światowy Dzień Chorych na Cukrzycę"
+  ],
+  "2027-11-16": [
+    "Międzynarodowy Dzień Tolerancji"
+  ],
+  "2027-11-17": [
+    "Międzynarodowy Dzień Studenta",
+    "Ogólnopolski Dzień bez Długów"
+  ],
+  "2027-11-18": [
+    "Światowy Dzień Rzucania Palenia"
+  ],
+  "2027-11-19": [
+    "Światowy Dzień Przewlekłej Obturacyjnej Choroby Płuc"
+  ],
+  "2027-11-20": [
+    "Dzień Uprzemysłowienia Afryki"
+  ],
+  "2027-11-21": [
+    "Dzień Pracownika Socjalnego",
+    "Dzień Życzliwości",
+    "Światowy Dzień Telewizji",
+    "Międzynarodowy Dzień Pamięci Ofiar Wypadków Drogowych",
+    "Uroczystość Jezusa Chrystusa",
+    "Króla Wszechświata"
+  ],
+  "2027-11-22": [
+    "22-26 listopada Dni Honorowego Krwiodawstwa Polskiego Czerwonego Krzyża"
+  ],
+  "2027-11-23": [
+    "22-26 listopada Dni Honorowego Krwiodawstwa Polskiego Czerwonego Krzyża"
+  ],
+  "2027-11-24": [
+    "22-26 listopada Dni Honorowego Krwiodawstwa Polskiego Czerwonego Krzyża"
+  ],
+  "2027-11-25": [
+    "Światowy Dzień Pluszowego Misia",
+    "Światowy Dzień bez Futra",
+    "22-26 listopada Dni Honorowego Krwiodawstwa Polskiego Czerwonego Krzyża",
+    "Międzynarodowy Dzień Eliminacji Przemocy wobec Kobiet",
+    "Dzień Kolejarza"
+  ],
+  "2027-11-26": [
+    "22-26 listopada Dni Honorowego Krwiodawstwa Polskiego Czerwonego Krzyża"
+  ],
+  "2027-11-28": [
+    "I niedziela Adwentu"
+  ],
+  "2027-11-29": [
+    "Międzynarodowy Dzień Solidarności z Narodem Palestyńskim",
+    "Andrzejki (w nocy z 29 na 30)",
+    "Dzień podchorążego"
+  ],
+  "2027-12-01": [
+    "Światowy Dzień Walki z AIDS"
+  ],
+  "2027-12-02": [
+    "Międzynarodowy Dzień Upamiętniający Zniesienie Niewolnictwa"
+  ],
+  "2027-12-03": [
+    "Międzynarodowy Dzień Niepełnosprawnych"
+  ],
+  "2027-12-04": [
+    "Barbórka (Dzień Górnika",
+    "Naftowca i Gazownika)"
+  ],
+  "2027-12-05": [
+    "Światowy Dzień Gleby",
+    "Międzynarodowy Dzień Wolontariusza",
+    "II niedziela Adwentu"
+  ],
+  "2027-12-06": [
+    "Dzień św. Mikołaja"
+  ],
+  "2027-12-07": [
+    "Międzynarodowy Dzień Lotnictwa Cywilnego"
+  ],
+  "2027-12-08": [
+    "Uroczystość Niepokalanego Poczęcia Najświętszej Maryi Panny"
+  ],
+  "2027-12-09": [
+    "Międzynarodowy Dzień Przeciwdziałania Korupcji"
+  ],
+  "2027-12-10": [
+    "Dzień Odlewnika",
+    "Dzień Ochrony Praw Dziecka",
+    "Międzynarodowy Dzień Praw Człowieka"
+  ],
+  "2027-12-11": [
+    "Międzynarodowy Dzień Terenów Górskich"
+  ],
+  "2027-12-12": [
+    "III niedziela Adwentu"
+  ],
+  "2027-12-13": [
+    "Światowy Dzień Telewizji dla Dzieci",
+    "Dzień Pamięci Ofiar Stanu Wojennego",
+    "Dzień Księgarza"
+  ],
+  "2027-12-17": [
+    "Dzień bez Przekleństw"
+  ],
+  "2027-12-18": [
+    "Międzynarodowy Dzień Emigrantów"
+  ],
+  "2027-12-19": [
+    "Dzień Narodów Zjednoczonych dla Współpracy Południe - Południe",
+    "IV niedziela Adwentu"
+  ],
+  "2027-12-20": [
+    "Dzień Ryby",
+    "Międzynarodowy Dzień Solidarności"
+  ],
+  "2027-12-22": [
+    "Początek astronomicznej zimy - najkrótszy dzień roku"
+  ],
+  "2027-12-24": [
+    "Wigilia Bożego Narodzenia"
+  ],
+  "2027-12-25": [
+    "Boże Narodzenie (pierwszy dzień)"
+  ],
+  "2027-12-26": [
+    "Boże Narodzenie (drugi dzień)"
+  ],
+  "2027-12-27": [
+    "Narodowy Dzień Zwycięskiego Powstania Wielkopolskiego"
+  ],
+  "2027-12-30": [
+    "Święto Świętej Rodziny"
+  ],
+  "2027-12-31": [
+    "Sylwester"
+  ]
+};

@@ -14,3 +14,8 @@ Statyczna strona dla GitHub Pages.
 - Pokazuje suchara.
 - Pokazuje laurkę z wybranych kategorii e-kartki.
 - Przycisk `Zgeneruj` losuje nową laurkę i nowego suchara.
+
+## Aktualizacja świąt
+- Dane świąt są zapisywane w `holidays-data.json` i `holidays-data.js`.
+- Generator pobiera święta z `https://www.kalendarzswiat.pl/`.
+- Ręczne odświeżenie: `python3 scripts/update_holidays.py`
