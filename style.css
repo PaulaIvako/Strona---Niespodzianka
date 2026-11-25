@@ -1,6 +1,8 @@
 :root {
-  --bg-a: #fff8ec;
-  --bg-b: #ffe7f1;
+  --bg-a: #fff3ce;
+  --bg-b: #ffebea;
+  --glow-a: #ffe1a8;
+  --glow-b: #ffd6e2;
   --surface: #ffffffde;
   --text: #1d2330;
   --accent: #ff5d76;
@@ -19,8 +21,8 @@ body {
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at 10% 0%, #ffd8d8 0%, transparent 45%),
-    radial-gradient(circle at 90% 100%, #ffd6ec 0%, transparent 35%),
+    radial-gradient(circle at 10% 0%, var(--glow-a) 0%, transparent 45%),
+    radial-gradient(circle at 90% 100%, var(--glow-b) 0%, transparent 35%),
     linear-gradient(135deg, var(--bg-a), var(--bg-b));
 }
 
@@ -47,16 +49,6 @@ body {
   font-size: clamp(1.3rem, 3vw, 2rem);
   line-height: 1.35;
 }
-
-.joke {
-  white-space: pre-line;
-  margin: 0 auto 1.6rem;
-  max-width: 70ch;
-  font-size: clamp(1rem, 2.4vw, 1.28rem);
-  line-height: 1.6;
-  color: #394055;
-}
-
 
 .search-wrap {
   width: min(760px, 100%);
@@ -120,6 +112,7 @@ body {
 }
 
 .next-btn {
+  margin-top: 1.25rem;
   border: 0;
   border-radius: 999px;
   padding: 0.8rem 1.35rem;

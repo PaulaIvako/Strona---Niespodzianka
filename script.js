@@ -1,6 +1,51 @@
+// Cztery warstwy tła płynnie zmieniają kolor wraz z lokalną porą dnia.
+const skyPalette = [
+  { hour: 0, colors: ["#101d38", "#10162e", "#223b63", "#25264b"] },
+  { hour: 5, colors: ["#101d38", "#10162e", "#223b63", "#25264b"] },
+  { hour: 7, colors: ["#ffead9", "#e9dff5", "#ffc7ad", "#cfc9ef"] },
+  { hour: 11, colors: ["#fff3ce", "#ffebea", "#ffe1a8", "#ffd6e2"] },
+  { hour: 17, colors: ["#fff3ce", "#ffebea", "#ffe1a8", "#ffd6e2"] },
+  { hour: 19, colors: ["#d48f7e", "#9b718e", "#ee987a", "#6e537c"] },
+  { hour: 20.5, colors: ["#d48f7e", "#9b718e", "#ee987a", "#6e537c"] },
+  { hour: 22, colors: ["#101d38", "#10162e", "#223b63", "#25264b"] },
+  { hour: 24, colors: ["#101d38", "#10162e", "#223b63", "#25264b"] }
+];
+
+function mixSkyColors(from, to, amount) {
+  const channel = (color, index) => parseInt(color.slice(index, index + 2), 16);
+  return "#" + [1, 3, 5].map((index) => {
+    const value = Math.round(channel(from, index) + (channel(to, index) - channel(from, index)) * amount);
+    return value.toString(16).padStart(2, "0");
+  }).join("");
+}
+
+function getCurrentHour() {
+  const current = new Date();
+  return current.getHours() + current.getMinutes() / 60 + current.getSeconds() / 3600;
+}
+
+function updateSkyColors() {
+  const preview = new URLSearchParams(window.location.search).get("podglad");
+  const previewHours = { poranek: 7, dzien: 13, afterwork: 16, wieczor: 19, noc: 23 };
+  const hour = Object.hasOwn(previewHours, preview) ? previewHours[preview] : getCurrentHour();
+  const nextIndex = skyPalette.findIndex((stop) => stop.hour > hour);
+  const from = skyPalette[Math.max(0, nextIndex - 1)];
+  const to = skyPalette[nextIndex];
+  const progress = (hour - from.hour) / (to.hour - from.hour);
+  const smooth = progress * progress * (3 - 2 * progress);
+  ["--bg-a", "--bg-b", "--glow-a", "--glow-b"].forEach((name, index) => {
+    document.body.style.setProperty(name, mixSkyColors(from.colors[index], to.colors[index], smooth));
+  });
+}
+
+updateSkyColors();
+window.setInterval(updateSkyColors, 10000);
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) updateSkyColors();
+});
+
 const todayEl = document.getElementById("today");
 const holidayEl = document.getElementById("holiday");
-const jokeEl = document.getElementById("joke");
 const imageEl = document.getElementById("greeting-image");
 const nextBtn = document.getElementById("next-btn");
 const searchForm = document.getElementById("search-form");
@@ -14,36 +59,22 @@ function focusSearchInput() {
   });
 }
 
-const now = new Date();
-const DATE_KEY = [
-  now.getFullYear(),
-  String(now.getMonth() + 1).padStart(2, "0"),
-  String(now.getDate()).padStart(2, "0")
-].join("-");
-const YEAR_KEY = String(now.getFullYear());
-const USED_KEY = `used-images-${YEAR_KEY}`;
-const USED_SUCHARY_KEY = `used-suchary-${YEAR_KEY}`;
-
-const FALLBACK_SUCHARY = [
-  { text: "Jak się nazywa latający kot? Kotlecik.", image: "" },
-  { text: "Co mówi ściana do ściany? Spotkajmy się na rogu.", image: "" },
-  { text: "Dlaczego komputerowi jest zimno? Bo ma otwarte okna.", image: "" }
-];
-
-let imagePools = null;
-let sucharyPool = null;
-let holidayCalendar = null;
-let currentTheme = "daily";
-let lastImageUrl = "";
-let lastSucharText = "";
-
-
-function isPinterestImageUrl(url) {
-  return typeof url === "string" && /^https:\/\/i\.pinimg\.com\//i.test(url);
+let now = new Date();
+function getDateKey(date) {
+  return [date.getFullYear(), String(date.getMonth() + 1).padStart(2, "0"), String(date.getDate()).padStart(2, "0")].join("-");
 }
+let DATE_KEY = getDateKey(now);
+let holidayCalendar = null;
+let currentPeriod = null;
+let lastImageUrl = "";
+let imageRequest = 0;
 
-function sanitizeImagePoolList(list) {
-  return unique((list || []).filter(isPinterestImageUrl));
+function getPeriod(hour) {
+  if (hour >= 6 && hour < 11) return "Morning";
+  if (hour >= 11 && hour < 16) return "Midday";
+  if (hour >= 16 && hour < 17) return "After Work";
+  if (hour >= 17 && hour < 22) return "Evening";
+  return "Night";
 }
 
 function setDateLine() {
@@ -53,13 +84,6 @@ function setDateLine() {
     month: "long",
     day: "numeric"
   });
-}
-
-function getSeasonTheme(monthIndex) {
-  if (monthIndex >= 2 && monthIndex <= 4) return "spring";
-  if (monthIndex >= 5 && monthIndex <= 7) return "summer";
-  if (monthIndex >= 8 && monthIndex <= 10) return "autumn";
-  return "winter";
 }
 
 function computeEasterDate(year) {
@@ -108,20 +132,6 @@ function getFallbackDays(year) {
   };
 }
 
-function mapThemeFromHolidayName(text) {
-  const lower = text.toLowerCase();
-  if (lower.includes("walentyn") || lower.includes("miło") || lower.includes("milos")) return "milosc";
-  if (lower.includes("dzię") || lower.includes("dzień matki") || lower.includes("dzień ojca") || lower.includes("babci") || lower.includes("dziadka")) {
-    return "podziekowania";
-  }
-  if (lower.includes("kaw")) return "pobudka";
-  if (lower.includes("przyja") || lower.includes("powodzenia")) return "powodzenia";
-  if (lower.includes("wielkanoc") || lower.includes("zapros") || lower.includes("sylwester") || lower.includes("dziecka")) {
-    return "zaproszenia";
-  }
-  return "daily";
-}
-
 async function loadHolidayCalendar() {
   if (holidayCalendar) return holidayCalendar;
   const data = typeof HOLIDAYS_DATA !== "undefined" ? HOLIDAYS_DATA : null;
@@ -133,110 +143,34 @@ async function loadHolidayCalendar() {
 async function getOccasion() {
   const calendar = await loadHolidayCalendar();
   const holidayNames = Array.isArray(calendar[DATE_KEY]) ? calendar[DATE_KEY] : [];
-  const title = holidayNames.join(", ");
+  const title = holidayNames.slice(0, 2).join(", ");
 
   if (title) {
-    return { title: `Dziś obchodzimy: ${title}`, theme: mapThemeFromHolidayName(title) };
+    return `Dziś obchodzimy: ${title}`;
   }
 
-  return { title: "Dziś nie ma u nas dodatkowego święta dnia", theme: getSeasonTheme(now.getMonth()) };
+  return "Dziś nie ma u nas dodatkowego święta dnia";
 }
 
-async function loadImagePools() {
-  if (imagePools) return imagePools;
+function usedImagesKey(period) {
+  return `used-images-${new Date().getFullYear()}-${period}`;
+}
+
+function getUsedImages(period) {
   try {
-    const data = typeof IMAGE_POOLS !== "undefined" ? IMAGE_POOLS : null;
-    if (!data) throw new Error("Brak IMAGE_POOLS");
-
-    imagePools = {
-      daily: sanitizeImagePoolList(data.daily),
-      pobudka: sanitizeImagePoolList(data.pobudka),
-      powodzenia: sanitizeImagePoolList(data.powodzenia),
-      zaproszenia: sanitizeImagePoolList(data.zaproszenia),
-      all: sanitizeImagePoolList(data.all)
-    };
+    const parsed = JSON.parse(localStorage.getItem(usedImagesKey(period)) || "[]");
+    return new Set(Array.isArray(parsed) ? parsed : []);
   } catch {
-    imagePools = { all: [] };
+    return new Set();
   }
-  return imagePools;
 }
 
-async function loadSucharyPool() {
-  if (sucharyPool) return sucharyPool;
+function saveUsedImages(period, used) {
   try {
-    const data = typeof SUCHARY_SHORT !== "undefined" ? SUCHARY_SHORT : null;
-    if (!data) throw new Error("Brak SUCHARY_SHORT");
-    const clean = data.filter((item) => item && typeof item.text === "string" && item.text.trim().length > 8);
-    sucharyPool = clean.length ? clean : FALLBACK_SUCHARY;
+    localStorage.setItem(usedImagesKey(period), JSON.stringify([...used]));
   } catch {
-    sucharyPool = FALLBACK_SUCHARY;
+    // Losowanie nadal działa, jeśli przeglądarka nie zapisuje historii.
   }
-  return sucharyPool;
-}
-
-function getUsedImages() {
-  try {
-    const parsed = JSON.parse(localStorage.getItem(USED_KEY) || "[]");
-    const clean = (Array.isArray(parsed) ? parsed : []).filter(isPinterestImageUrl);
-    if (clean.length !== parsed.length) saveUsedImages(clean);
-    return clean;
-  } catch {
-    return [];
-  }
-}
-
-function saveUsedImages(urls) {
-  localStorage.setItem(USED_KEY, JSON.stringify(urls.slice(-1500)));
-}
-
-function getUsedSuchary() {
-  try {
-    return JSON.parse(localStorage.getItem(USED_SUCHARY_KEY) || "[]");
-  } catch {
-    return [];
-  }
-}
-
-function saveUsedSuchary(items) {
-  localStorage.setItem(USED_SUCHARY_KEY, JSON.stringify(items.slice(-5000)));
-}
-
-function unique(list) {
-  return [...new Set(list)];
-}
-
-function pickRandom(array) {
-  return array[Math.floor(Math.random() * array.length)];
-}
-
-function pickRandomDifferentByText(list, lastText) {
-  if (!list.length) return null;
-  const filtered = list.filter((item) => item.text !== lastText);
-  return pickRandom(filtered.length ? filtered : list);
-}
-
-function buildCandidatePool(pools, theme) {
-  return unique([
-    ...(pools[theme] || []),
-    ...(pools.daily || []),
-    ...(pools.pobudka || []),
-    ...(pools.powodzenia || []),
-    ...(pools.all || [])
-  ]);
-}
-
-function getNextImageUrl(pools, theme, blocked) {
-  const pool = buildCandidatePool(pools, theme).filter((url) => !blocked.has(url));
-  if (!pool.length) throw new Error("Pula obrazków jest pusta");
-
-  const used = new Set(getUsedImages());
-  const fresh = pool.filter((url) => !used.has(url) && url !== lastImageUrl);
-  const options = fresh.length ? fresh : pool.filter((url) => url !== lastImageUrl);
-  const selected = pickRandom(options.length ? options : pool);
-
-  const updatedUsed = fresh.length ? [...used, selected] : [selected];
-  saveUsedImages(updatedUsed);
-  return selected;
 }
 
 function preloadImage(url) {
@@ -248,81 +182,96 @@ function preloadImage(url) {
   });
 }
 
-async function renderNewImage() {
-  try {
-    const pools = await loadImagePools();
-    const blocked = new Set();
-
-    for (let attempt = 0; attempt < 8; attempt += 1) {
-      const url = getNextImageUrl(pools, currentTheme, blocked);
-      try {
-        await preloadImage(url);
-        imageEl.src = url;
-        lastImageUrl = url;
-        return;
-      } catch {
-        blocked.add(url);
-      }
-    }
-
-    throw new Error("Nie udało się załadować obrazka");
-  } catch {
-    const pools = await loadImagePools();
-    const fallback = (pools.all && pools.all[0]) || "";
-    if (fallback) {
-      imageEl.src = fallback;
-      lastImageUrl = fallback;
-    }
-  }
-}
-
-async function renderNewSuchar() {
-  const pool = await loadSucharyPool();
-  const used = new Set(getUsedSuchary());
-
-  let available = pool.filter((item) => !used.has(item.text) && item.text !== lastSucharText);
-
-  if (!available.length) {
-    // Start a new cycle only after exhausting the full pool.
-    saveUsedSuchary([]);
-    available = pool.filter((item) => item.text !== lastSucharText);
-  }
-
-  const selected = pickRandom(available.length ? available : pool);
-
-  if (selected && selected.text) {
-    jokeEl.textContent = selected.text;
-    lastSucharText = selected.text;
-    saveUsedSuchary([...used, selected.text]);
-    return;
-  }
-
-  const fallback = pickRandom(FALLBACK_SUCHARY);
-  jokeEl.textContent = fallback.text;
-  lastSucharText = fallback.text;
-}
-
-async function generateAll() {
+async function renderNewImage(period) {
+  const request = ++imageRequest;
   nextBtn.disabled = true;
-  await Promise.all([renderNewImage(), renderNewSuchar()]);
+  const all = typeof IMAGE_POOLS !== "undefined" && Array.isArray(IMAGE_POOLS[period])
+    ? [...new Set(IMAGE_POOLS[period])] : [];
+  const used = getUsedImages(period);
+  let remaining = all.filter((url) => !used.has(url) && url !== lastImageUrl);
+  if (!remaining.length) {
+    used.clear();
+    remaining = all.filter((url) => url !== lastImageUrl);
+    if (!remaining.length) remaining = [...all];
+  }
+  while (remaining.length) {
+    const index = Math.floor(Math.random() * remaining.length);
+    const [url] = remaining.splice(index, 1);
+    try {
+      await preloadImage(url);
+      if (request !== imageRequest) return;
+      imageEl.src = url;
+      imageEl.alt = "Laurka dnia";
+      lastImageUrl = url;
+      used.add(url);
+      saveUsedImages(period, used);
+      nextBtn.disabled = false;
+      return;
+    } catch {
+      // Spróbuj kolejnego obrazka z tego samego folderu.
+    }
+  }
+  if (request !== imageRequest) return;
+  imageEl.removeAttribute("src");
+  imageEl.alt = "Brak dostępnych obrazków dla tej pory dnia";
   nextBtn.disabled = false;
+}
+
+async function updateSchedule() {
+  const current = new Date();
+  const dateKey = getDateKey(current);
+  if (dateKey !== DATE_KEY) {
+    if (current.getFullYear() !== now.getFullYear()) holidayCalendar = null;
+    now = current;
+    DATE_KEY = dateKey;
+    setDateLine();
+    holidayEl.textContent = await getOccasion();
+  }
+  const period = getPeriod(getCurrentHour());
+  if (period !== currentPeriod) {
+    currentPeriod = period;
+    imageEl.removeAttribute("src");
+    renderNewImage(period);
+  }
+}
+
+let periodTimer;
+function scheduleNextPeriod() {
+  window.clearTimeout(periodTimer);
+  const current = new Date();
+  const next = new Date(current);
+  const nextHour = [6, 11, 16, 17, 22].find((hour) => hour > current.getHours());
+  if (nextHour === undefined) {
+    next.setDate(next.getDate() + 1);
+    next.setHours(6, 0, 0, 0);
+  } else {
+    next.setHours(nextHour, 0, 0, 0);
+  }
+  periodTimer = window.setTimeout(() => {
+    updateSchedule();
+    scheduleNextPeriod();
+  }, Math.max(0, next - current));
 }
 
 async function init() {
   setDateLine();
-
-  const occasion = await getOccasion();
-  holidayEl.textContent = occasion.title;
-  currentTheme = occasion.theme;
-
-  await generateAll();
+  holidayEl.textContent = await getOccasion();
+  await updateSchedule();
+  scheduleNextPeriod();
   focusSearchInput();
 }
 
 init();
-nextBtn.addEventListener("click", generateAll);
-window.addEventListener("pageshow", focusSearchInput);
-
+nextBtn.addEventListener("click", () => {
+  const period = getPeriod(getCurrentHour());
+  currentPeriod = period;
+  renderNewImage(period);
+});
+window.setInterval(updateSchedule, 10000);
+window.addEventListener("pageshow", () => { focusSearchInput(); updateSchedule(); scheduleNextPeriod(); });
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) { updateSchedule(); scheduleNextPeriod(); }
+});
 
 function buildSearchUrl(value) {
   const raw = value.trim();
