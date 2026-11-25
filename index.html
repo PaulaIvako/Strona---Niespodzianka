@@ -1,38 +1,43 @@
 <!doctype html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Codzienna Niespodzianka</title>
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="style.css?v=20261125j" />
-  </head>
-  <body>
-    <main class="card" aria-live="polite">
-      <p id="today" class="today"></p>
-      <h1 id="holiday" class="holiday">Sprawdzam, jakie jest dziś święto...</h1>
-
-      <form id="search-form" class="search-wrap" role="search" aria-label="Wyszukiwarka">
-        <input
-          id="search-input"
-          type="search"
-          placeholder="Wyszukaj w Google lub wpisz URL"
-          autocomplete="off"
-          autofocus
-        />
-        <button type="submit" aria-label="Szukaj">Szukaj</button>
-      </form>
-
-      <div class="image-wrap">
-        <img id="greeting-image" alt="Laurka dnia" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codzienna Niespodzianka</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css?v=20261125k" />
+</head>
+<body>
+  <div class="wrap">
+    <main class="surface">
+      <header class="top">
+        <div class="brand"><span class="brand-mark" aria-hidden="true">✳</span> Codzienna niespodzianka</div>
+        <div class="evening"><span id="period-icon" aria-hidden="true">🌇</span><span id="period-badge">Dobry wieczór</span></div>
+      </header>
+      <div class="layout">
+        <section class="intro">
+          <h1><span id="greeting-first">Miłego</span><br><em id="greeting-last">wieczoru.</em></h1>
+          <p id="today" class="date"></p>
+          <div class="occasion" aria-live="polite">
+            <p class="caption">Dziś obchodzimy</p>
+            <p id="holiday">Sprawdzam, jakie jest dziś święto...</p>
+          </div>
+          <form id="search-form" class="search" role="search" aria-label="Wyszukiwarka">
+            <input id="search-input" type="search" aria-label="Wyszukiwarka" placeholder="Szukaj w Google lub wpisz adres" autocomplete="off" autofocus />
+            <button type="submit">Szukaj</button>
+          </form>
+        </section>
+        <section class="visual" aria-label="Obrazek dnia">
+          <div class="visual-top"><div class="visual-title">Obrazek na teraz</div><div id="period-caption" class="visual-meta">Dla spokojnego wieczoru</div></div>
+          <div class="frame"><img id="greeting-image" alt="Laurka dnia" /></div>
+          <div class="visual-bottom"><button id="next-btn" class="next" type="button">Losuj</button></div>
+        </section>
       </div>
-
-      <button id="next-btn" type="button" class="next-btn">Losuj</button>
-      <p class="sources">Źródła: e-kartki.net.pl (miłego dnia, powodzenia, zaproszenia)</p>
+      <footer class="footer">Źródła: e-kartki.net.pl (miłego dnia, powodzenia, zaproszenia)</footer>
     </main>
-
-    <script src="data.js?v=20261125h"></script>
-    <script src="holidays-data.js?v=20261125hc"></script>
-    <script src="script.js?v=20261125j"></script>
-  </body>
+  </div>
+  <script src="data.js?v=20261125h"></script>
+  <script src="holidays-data.js?v=20261125hc"></script>
+  <script src="script.js?v=20261125k"></script>
+</body>
 </html>

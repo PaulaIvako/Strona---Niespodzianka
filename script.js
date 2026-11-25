@@ -50,6 +50,29 @@ const imageEl = document.getElementById("greeting-image");
 const nextBtn = document.getElementById("next-btn");
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
+const periodIconEl = document.getElementById("period-icon");
+const periodBadgeEl = document.getElementById("period-badge");
+const greetingFirstEl = document.getElementById("greeting-first");
+const greetingLastEl = document.getElementById("greeting-last");
+const periodCaptionEl = document.getElementById("period-caption");
+
+const periodPresentation = {
+  "Morning": { icon: "🌅", badge: "Dzień dobry", first: "Miłego", last: "poranka.", caption: "Na dobry początek dnia" },
+  "Midday": { icon: "☀️", badge: "Dobrego dnia", first: "Miłego", last: "dnia.", caption: "Dla miłego dnia" },
+  "After Work": { icon: "🏡", badge: "Po pracy", first: "Miłego", last: "odpoczynku.", caption: "Chwila po pracy" },
+  "Evening": { icon: "🌇", badge: "Dobry wieczór", first: "Miłego", last: "wieczoru.", caption: "Dla spokojnego wieczoru" },
+  "Night": { icon: "🌙", badge: "Dobranoc", first: "Spokojnej", last: "nocy.", caption: "Na spokojną noc" }
+};
+
+function updatePeriodPresentation(period) {
+  const display = periodPresentation[period];
+  periodIconEl.textContent = display.icon;
+  periodBadgeEl.textContent = display.badge;
+  greetingFirstEl.textContent = display.first;
+  greetingLastEl.textContent = display.last;
+  periodCaptionEl.textContent = display.caption;
+}
+
 
 
 function focusSearchInput() {
@@ -188,13 +211,13 @@ async function loadHolidayCalendar() {
 async function getOccasion() {
   const calendar = await loadHolidayCalendar();
   const holidayNames = Array.isArray(calendar[DATE_KEY]) ? calendar[DATE_KEY] : [];
-  const title = holidayNames.slice(0, 2).join(", ");
+  const title = holidayNames.slice(0, 2).join("\n");
 
   if (title) {
-    return `Dziś obchodzimy: ${title}`;
+    return title;
   }
 
-  return "Dziś nie ma u nas dodatkowego święta dnia";
+  return "Dziś nie ma dodatkowego święta dnia";
 }
 
 function usedImagesKey(period) {
@@ -276,6 +299,7 @@ async function updateSchedule() {
   const period = getPeriod(getCurrentHour());
   if (period !== currentPeriod) {
     currentPeriod = period;
+    updatePeriodPresentation(period);
     imageEl.removeAttribute("src");
     renderNewImage(period);
   }
@@ -311,6 +335,7 @@ init();
 nextBtn.addEventListener("click", () => {
   const period = getPeriod(getCurrentHour());
   currentPeriod = period;
+  updatePeriodPresentation(period);
   renderNewImage(period);
 });
 window.setInterval(updateSchedule, 10000);
@@ -324,7 +349,7 @@ function buildSearchUrl(value) {
   if (!raw) return "https://www.google.com";
 
   const hasProtocol = /^https?:\/\//i.test(raw);
-  const looksLikeDomain = /\.[a-z]{2,}(\/|$)/i.test(raw);
+  const looksLikeDomain = /\.[a-z]{2,}([/:?#]|$)/i.test(raw) && !/\s/.test(raw);
 
   if (hasProtocol) return raw;
   if (looksLikeDomain) return `https://${raw}`;
