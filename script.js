@@ -69,6 +69,51 @@ let currentPeriod = null;
 let lastImageUrl = "";
 let imageRequest = 0;
 
+// Obrazki wybrane po przeglądzie jakości wyświetlamy w mniejszym rozmiarze.
+const SMALLER_IMAGE_PATHS = new Set([
+  "obrazki/Morning/00ed964d5a13ddbdf3361c3965463517.jpg",
+  "obrazki/Morning/19996de26d50eb837077cb1aaaaf0db7.jpg",
+  "obrazki/Morning/29a1d7f630aea6a8ec28b9fb2f85c849.jpg",
+  "obrazki/Morning/513e1805e9a2c5759b95.jpg",
+  "obrazki/Morning/6b1a36e7e35f1259642c33c8a1d98806.jpg",
+  "obrazki/Morning/6eb7111ce7c34c00e687.png",
+  "obrazki/Morning/730a7ce9c390d91fb22cfa8ff94ce567.jpg",
+  "obrazki/Morning/738d727d6ab5f92369034b4450dcff24.jpg",
+  "obrazki/Morning/8c9842acf616273f66c4.png",
+  "obrazki/Morning/b53c73efcff8bf1cc7e210193881fa4f.jpg",
+  "obrazki/Morning/c07bac81db6a3ef155f1e4bab55c0208.jpg",
+  "obrazki/Morning/d7d5c2db6050f628ae98d613d9bf3c80.jpg",
+  "obrazki/Midday/0490513c0050659d1712fb0a416be983.jpg",
+  "obrazki/Midday/0c0c200ee666f333c9b73a9dd197160d.jpg",
+  "obrazki/Midday/1316c631f23bc01d9b3b37e917edd9a8.jpg",
+  "obrazki/Midday/1b1f341d185055c55e41718bfca18dc3.jpg",
+  "obrazki/Midday/39ca8976824a7201e71f030fd024d847.jpg",
+  "obrazki/Midday/48fdb46bf6af63024f4583c4f07374a5.jpg",
+  "obrazki/Midday/505bffa305eb944e9ccf573ff9d231a9.jpg",
+  "obrazki/Midday/584156b385c480156e7f95772150af54.jpg",
+  "obrazki/Midday/95e878c4eb5b62c64c9b.jpg",
+  "obrazki/Midday/ad9c48a4d67c6061438b3d3619704417.jpg",
+  "obrazki/Midday/beb81f96a49a13f940a1288d38253d98.jpg",
+  "obrazki/Midday/c8e7451bb9fb8d733fbf893b3fe6f242.jpg",
+  "obrazki/After Work/26c03e1e66b0f5cc39e023e711d95c02.jpg",
+  "obrazki/After Work/9d6fbcd8bd269b0d7066441e9c437e40.jpg",
+  "obrazki/Evening/6901af05e39beabad38ab810987e7596.jpg",
+  "obrazki/Evening/7777601527f66a1ce0e9e4b912b8cd4e.jpg",
+  "obrazki/Evening/c6f42b4e5a0f2dbdddd792fa063b31bf.jpg",
+  "obrazki/Night/018ae694a4aec6129592dc8b5a843fe6.jpg",
+  "obrazki/Night/034892bd3270c44b8416b7fc7b5b61c1.jpg",
+  "obrazki/Night/37c9c5af2cebbf382db037127cf69c39.jpg",
+  "obrazki/Night/3bff8906385ddeb8ffce6b9b4460f8cd.jpg",
+  "obrazki/Night/57b7b183b8398528f61e553e011c01d1.jpg",
+  "obrazki/Night/61a8dbf0d7902d082c5821c5320789ae.jpg",
+  "obrazki/Night/6b3ec9b5cb996676472087cefce50ced.jpg",
+  "obrazki/Night/797c676936a0f189ebf3c5bfd8df2a68.jpg",
+  "obrazki/Night/939a4ca15898dcd39af41d48d001f8a3.gif",
+  "obrazki/Night/Zrzut ekranu 2026-11-25 o 15.53.29.png",
+  "obrazki/Night/b330a33e3dfca9f1e07152212c050de6.jpg",
+  "obrazki/Night/f102ecef987c7c334b291dd9c908aec3.jpg"
+]);
+
 function getPeriod(hour) {
   if (hour >= 6 && hour < 11) return "Morning";
   if (hour >= 11 && hour < 16) return "Midday";
@@ -200,6 +245,7 @@ async function renderNewImage(period) {
     try {
       await preloadImage(url);
       if (request !== imageRequest) return;
+      imageEl.classList.toggle("smaller-image", SMALLER_IMAGE_PATHS.has(url));
       imageEl.src = url;
       imageEl.alt = "Laurka dnia";
       lastImageUrl = url;

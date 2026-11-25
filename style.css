@@ -109,6 +109,11 @@ body {
   background: #fff;
 }
 
+#greeting-image.smaller-image {
+  max-width: min(100%, 450px);
+  max-height: min(60vh, 450px);
+}
+
 .status {
   margin: 1rem 0 0.75rem;
   color: #495067;
