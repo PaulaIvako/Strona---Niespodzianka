@@ -1,6 +1,6 @@
 # Strona niespodzianka
 
-Strona wyświetla datę, maksymalnie dwa pierwsze święta dnia, wyszukiwarkę i losowy obrazek. Przycisk „Losuj” wybiera obrazek z folderu właściwego dla aktualnej pory. Kolory tła zmieniają się stopniowo w zależności od lokalnej godziny.
+Strona wyświetla datę, maksymalnie dwa pierwsze święta dnia, wyszukiwarkę i losowy obrazek. Obrazek losuje się po wejściu lub odświeżeniu strony oraz po naciśnięciu „Losuj”, z folderu właściwego dla aktualnej pory. Gdy strona pozostaje otwarta w chwili zmiany pory, widoczny obrazek pozostaje do kolejnego losowania. Kolory tła zmieniają się stopniowo w zależności od lokalnej godziny.
 
 ## Co jest w folderze
 

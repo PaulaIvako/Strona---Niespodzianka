@@ -300,8 +300,6 @@ async function updateSchedule() {
   if (period !== currentPeriod) {
     currentPeriod = period;
     updatePeriodPresentation(period);
-    imageEl.removeAttribute("src");
-    renderNewImage(period);
   }
 }
 
@@ -327,6 +325,7 @@ async function init() {
   setDateLine();
   holidayEl.textContent = await getOccasion();
   await updateSchedule();
+  renderNewImage(getPeriod(getCurrentHour()));
   scheduleNextPeriod();
   focusSearchInput();
 }
